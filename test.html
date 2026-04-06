@@ -11,6 +11,9 @@
             margin: 20px;
             background-color: #f4f4f4;
         }
+        h1 {
+            text-align: center;
+        }
         h2 {
             color: #333;
             border-bottom: 2px solid #ccc;
@@ -35,11 +38,50 @@
             margin-left: 10px;
             color: #555;
         }
+
+        /* Twitch layout */
+        .twitch-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .twitch-video {
+            flex: 2 1 600px;
+        }
+        .twitch-chat {
+            flex: 1 1 300px;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
 
     <h1>Website Categories</h1>
+
+    <!-- Twitch Embed -->
+    <div class="twitch-wrapper">
+        <!-- Video -->
+        <div class="twitch-video">
+            <iframe
+                src="https://player.twitch.tv/?channel=EvaPilot1&parent=localhost"
+                height="400"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Chat -->
+        <div class="twitch-chat">
+            <iframe
+                src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=localhost"
+                height="400">
+            </iframe>
+        </div>
+    </div>
 
     <h2>1. Search Engines</h2>
     <ul>
