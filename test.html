@@ -1,116 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Directory</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-    }
-    header {
-      background: #333;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-    .container {
-      display: flex;
-    }
-    aside {
-      width: 250px;
-      background: #222;
-      color: #fff;
-      height: 100vh;
-      padding: 1rem;
-    }
-    aside ul {
-      list-style: none;
-      padding: 0;
-    }
-    aside li {
-      margin: 0.5rem 0;
-    }
-    aside a {
-      color: #fff;
-      text-decoration: none;
-    }
-    main {
-      flex: 1;
-      padding: 1rem;
-    }
-    .card {
-      background: #fff;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .search {
-      margin-bottom: 1rem;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .description {
+            margin-left: 10px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>My Web Directory</h1>
-</header>
+    <h1>Website Categories</h1>
 
-<div class="container">
-
-  <aside>
-    <h3>Categories</h3>
+    <h2>1. Search Engines</h2>
     <ul>
-      <li><a href="#">Technology</a></li>
-      <li><a href="#">Business</a></li>
-      <li><a href="#">Education</a></li>
-      <li><a href="#">Entertainment</a></li>
+        <li><a href="https://www.google.com" target="_blank">Google</a><span class="description"> - The most widely used search engine.</span></li>
+        <li><a href="https://www.bing.com" target="_blank">Bing</a><span class="description"> - Microsoft’s search engine.</span></li>
+        <li><a href="https://duckduckgo.com" target="_blank">DuckDuckGo</a><span class="description"> - Privacy-focused search engine.</span></li>
     </ul>
-  </aside>
 
-  <main>
-    <div class="search">
-      <input type="text" placeholder="Search directory..." />
-    </div>
+    <h2>2. Entertainment & Streaming</h2>
+    <ul>
+        <li><a href="https://www.youtube.com" target="_blank">YouTube</a><span class="description"> - Video-sharing platform.</span></li>
+        <li><a href="https://www.netflix.com" target="_blank">Netflix</a><span class="description"> - Streaming movies and TV shows.</span></li>
+        <li><a href="https://www.twitch.tv" target="_blank">Twitch</a><span class="description"> - Live streaming platform.</span></li>
+    </ul>
 
-    <div class="card">
-      <h2>Example Website</h2>
-      <p>Description of the website goes here.</p>
-      <a href="#" target="_blank">Visit Site</a>
-    </div>
+    <h2>3. E-commerce & Shopping</h2>
+    <ul>
+        <li><a href="https://www.amazon.com" target="_blank">Amazon</a><span class="description"> - Global online marketplace.</span></li>
+        <li><a href="https://www.ebay.com" target="_blank">eBay</a><span class="description"> - Auction and shopping platform.</span></li>
+        <li><a href="https://www.etsy.com" target="_blank">Etsy</a><span class="description"> - Handmade and vintage goods marketplace.</span></li>
+    </ul>
 
-    <div class="card">
-      <h2>Another Site</h2>
-      <p>Short description here.</p>
-      <a href="#" target="_blank">Visit Site</a>
-    </div>
+    <h2>4. Social Media</h2>
+    <ul>
+        <li><a href="https://www.facebook.com" target="_blank">Facebook</a><span class="description"> - Social networking site.</span></li>
+        <li><a href="https://www.instagram.com" target="_blank">Instagram</a><span class="description"> - Photo and video sharing.</span></li>
+        <li><a href="https://twitter.com" target="_blank">X (Twitter)</a><span class="description"> - Short updates and discussions.</span></li>
+    </ul>
 
-  </main>
+    <h2>5. Education & Learning</h2>
+    <ul>
+        <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a><span class="description"> - Free educational courses.</span></li>
+        <li><a href="https://www.coursera.org" target="_blank">Coursera</a><span class="description"> - Online courses and degrees.</span></li>
+        <li><a href="https://www.edx.org" target="_blank">edX</a><span class="description"> - University-level courses.</span></li>
+    </ul>
 
-</div>
+    <h2>6. News & Media</h2>
+    <ul>
+        <li><a href="https://www.bbc.com/news" target="_blank">BBC News</a><span class="description"> - Global and UK news.</span></li>
+        <li><a href="https://www.theguardian.com" target="_blank">The Guardian</a><span class="description"> - News and opinion.</span></li>
+        <li><a href="https://www.cnn.com" target="_blank">CNN</a><span class="description"> - International news coverage.</span></li>
+    </ul>
 
-<script>
-  // Basic search filter (client-side)
-  const searchInput = document.querySelector('input[type="text"]');
-  const cards = document.querySelectorAll('.card');
+    <h2>7. Technology & Development</h2>
+    <ul>
+        <li><a href="https://github.com" target="_blank">GitHub</a><span class="description"> - Code hosting and collaboration.</span></li>
+        <li><a href="https://stackoverflow.com" target="_blank">Stack Overflow</a><span class="description"> - Developer Q&A site.</span></li>
+        <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a><span class="description"> - Web development documentation.</span></li>
+    </ul>
 
-  searchInput.addEventListener('input', function() {
-    const value = this.value.toLowerCase();
+    <h2>8. Gaming</h2>
+    <ul>
+        <li><a href="https://store.steampowered.com" target="_blank">Steam</a><span class="description"> - PC game distribution platform.</span></li>
+        <li><a href="https://www.ign.com" target="_blank">IGN</a><span class="description"> - Gaming news and reviews.</span></li>
+        <li><a href="https://www.gamespot.com" target="_blank">GameSpot</a><span class="description"> - Gaming updates and reviews.</span></li>
+    </ul>
 
-    cards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      card.style.display = text.includes(value) ? 'block' : 'none';
-    });
-  });
-</script>
+    <h2>9. Travel & Booking</h2>
+    <ul>
+        <li><a href="https://www.booking.com" target="_blank">Booking.com</a><span class="description"> - Hotel bookings worldwide.</span></li>
+        <li><a href="https://www.skyscanner.net" target="_blank">Skyscanner</a><span class="description"> - Flight comparison tool.</span></li>
+        <li><a href="https://www.tripadvisor.com" target="_blank">TripAdvisor</a><span class="description"> - Travel reviews and tips.</span></li>
+    </ul>
+
+    <h2>10. Productivity & Tools</h2>
+    <ul>
+        <li><a href="https://docs.google.com" target="_blank">Google Docs</a><span class="description"> - Online document editor.</span></li>
+        <li><a href="https://www.notion.so" target="_blank">Notion</a><span class="description"> - Workspace for notes and tasks.</span></li>
+        <li><a href="https://trello.com" target="_blank">Trello</a><span class="description"> - Project management tool.</span></li>
+    </ul>
 
 </body>
 </html>
