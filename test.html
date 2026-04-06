@@ -74,56 +74,327 @@
             border: none;
         }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Categories</title>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000;
+            --card: #f4f4f4;
+        }
+
+        body.dark {
+            --bg: #121212;
+            --text: #fff;
+            --card: #1e1e1e;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 20px;
+            transition: 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
         /* Controls */
         .controls {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        button {
-            padding: 8px 12px;
-            cursor: pointer;
+        .status.live { color: red; }
+        .status.offline { color: gray; }
+
+        /* Twitch */
+        .twitch-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
         }
 
-        .status {
+        .twitch-video { flex: 2 1 600px; }
+        .twitch-chat { flex: 1 1 300px; }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Card grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            margin: 8px 0;
+        }
+
+        a {
+            color: #4da3ff;
+            text-decoration: none;
             font-weight: bold;
         }
 
-        .live {
-            color: red;
-        }
-
-        .offline {
-            color: gray;
+        .description {
+            display: block;
+            font-size: 0.9em;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
 
-    <div class="controls">
-        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-        <div id="status" class="status">Checking status...</div>
+<div class="controls">
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div id="status" class="status">Checking status...</div>
+</div>
+
+<h1>Website Categories</h1>
+
+<!-- Twitch -->
+<div class="twitch-wrapper">
+    <div class="twitch-video">
+        <iframe src="https://player.twitch.tv/?channel=EvaPilot1&parent=evapilot1.github.io"></iframe>
     </div>
+    <div class="twitch-chat">
+        <iframe src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=evapilot1.github.io"></iframe>
+    </div>
+</div>
+
+<!-- Cards -->
+<div class="grid">
+
+    <div class="card">
+        <h2>Search Engines</h2>
+        <ul>
+            <li><a href="https://google.com">Google</a><span class="description">Search engine</span></li>
+            <li><a href="https://bing.com">Bing</a><span class="description">Microsoft search</span></li>
+            <li><a href="https://duckduckgo.com">DuckDuckGo</a><span class="description">Private search</span></li>
+        </ul>
+
+    <h2>2. Entertainment & Streaming</h2>
+    <ul>
+        <li><a href="https://www.youtube.com" target="_blank">YouTube</a><span class="description"> - Video-sharing platform.</span></li>
+        <li><a href="https://www.netflix.com" target="_blank">Netflix</a><span class="description"> - Streaming movies and TV shows.</span></li>
+        <li><a href="https://www.twitch.tv" target="_blank">Twitch</a><span class="description"> - Live streaming platform.</span></li>
+    </ul>
+
+    <h2>3. E-commerce & Shopping</h2>
+    <ul>
+        <li><a href="https://www.amazon.com" target="_blank">Amazon</a><span class="description"> - Global online marketplace.</span></li>
+        <li><a href="https://www.ebay.com" target="_blank">eBay</a><span class="description"> - Auction and shopping platform.</span></li>
+        <li><a href="https://www.etsy.com" target="_blank">Etsy</a><span class="description"> - Handmade and vintage goods marketplace.</span></li>
+    </ul>
+
+    <h2>4. Social Media</h2>
+    <ul>
+        <li><a href="https://www.facebook.com" target="_blank">Facebook</a><span class="description"> - Social networking site.</span></li>
+        <li><a href="https://www.instagram.com" target="_blank">Instagram</a><span class="description"> - Photo and video sharing.</span></li>
+        <li><a href="https://twitter.com" target="_blank">X (Twitter)</a><span class="description"> - Short updates and discussions.</span></li>
+    </ul>
+
+    <h2>5. Education & Learning</h2>
+    <ul>
+        <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a><span class="description"> - Free educational courses.</span></li>
+        <li><a href="https://www.coursera.org" target="_blank">Coursera</a><span class="description"> - Online courses and degrees.</span></li>
+        <li><a href="https://www.edx.org" target="_blank">edX</a><span class="description"> - University-level courses.</span></li>
+    </ul>
+
+    <h2>6. News & Media</h2>
+    <ul>
+        <li><a href="https://www.bbc.com/news" target="_blank">BBC News</a><span class="description"> - Global and UK news.</span></li>
+        <li><a href="https://www.theguardian.com" target="_blank">The Guardian</a><span class="description"> - News and opinion.</span></li>
+        <li><a href="https://www.cnn.com" target="_blank">CNN</a><span class="description"> - International news coverage.</span></li>
+    </ul>
+
+    <h2>7. Technology & Development</h2>
+    <ul>
+        <li><a href="https://github.com" target="_blank">GitHub</a><span class="description"> - Code hosting and collaboration.</span></li>
+        <li><a href="https://stackoverflow.com" target="_blank">Stack Overflow</a><span class="description"> - Developer Q&A site.</span></li>
+        <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a><span class="description"> - Web development documentation.</span></li>
+    </ul>
+
+    <h2>8. Gaming</h2>
+    <ul>
+        <li><a href="https://store.steampowered.com" target="_blank">Steam</a><span class="description"> - PC game distribution platform.</span></li>
+        <li><a href="https://www.ign.com" target="_blank">IGN</a><span class="description"> - Gaming news and reviews.</span></li>
+        <li><a href="https://www.gamespot.com" target="_blank">GameSpot</a><span class="description"> - Gaming updates and reviews.</span></li>
+    </ul>
+
+    <h2>9. Travel & Booking</h2>
+    <ul>
+        <li><a href="https://www.booking.com" target="_blank">Booking.com</a><span class="description"> - Hotel bookings worldwide.</span></li>
+        <li><a href="https://www.skyscanner.net" target="_blank">Skyscanner</a><span class="description"> - Flight comparison tool.</span></li>
+        <li><a href="https://www.tripadvisor.com" target="_blank">TripAdvisor</a><span class="description"> - Travel reviews and tips.</span></li>
+    </ul>
+
+    <h2>10. Productivity & Tools</h2>
+    <ul>
+        <li><a href="https://docs.google.com" target="_blank">Google Docs</a><span class="description"> - Online document editor.</span></li>
+        <li><a href="https://www.notion.so" target="_blank">Notion</a><span class="description"> - Workspace for notes and tasks.</span></li>
+        <li><a href="https://trello.com" target="_blank">Trello</a><span class="description"> - Project management tool.</span></li>
+    </ul>
+Please can you generate a list of websites with a short description, placed in to 10 distinct categories?
+
+Here’s a structured list of websites grouped into 10 distinct categories, each with short, clear descriptions:
+
+🌐 1. Search Engines
+Google – The most widely used search engine for finding websites, images, videos, and more.
+
+Bing – Microsoft’s search engine with rewards and AI-powered results.
+
+DuckDuckGo – Privacy-focused search engine that doesn’t track users.
+
+🎥 2. Entertainment & Streaming
+YouTube – Video-sharing platform for entertainment, tutorials, and vlogs.
+
+Netflix – Subscription streaming service for movies and TV shows.
+
+Twitch – Live streaming platform focused on gaming and creators.
+
+🛒 3. E-commerce & Shopping
+Amazon – Global marketplace for buying almost anything online.
+
+eBay – Auction-style and direct sales platform for new and used items.
+
+Etsy – Marketplace for handmade, vintage, and unique goods.
+
+📱 4. Social Media
+Facebook – Social networking site for connecting with friends and communities.
+
+Instagram – Photo and video sharing platform.
+
+X (Twitter) – Platform for short updates, news, and discussions.
+
+📚 5. Education & Learning
+Khan Academy – Free online courses in maths, science, and more.
+
+Coursera – Online courses and degrees from universities.
+
+edX – University-level courses from institutions worldwide.
+
+📰 6. News & Media
+BBC News – Global news coverage with a UK focus.
+
+The Guardian – News, opinion, and investigative journalism.
+
+CNN – International news and breaking updates.
+
+💻 7. Technology & Development
+GitHub – Platform for hosting and collaborating on code projects.
+
+Stack Overflow – Q&A site for programmers and developers.
+
+MDN Web Docs – Documentation for web technologies like HTML, CSS, and JavaScript.
+
+🎮 8. Gaming
+Steam – Digital distribution platform for PC games.
+
+IGN – Gaming news, reviews, and guides.
+
+GameSpot – Reviews, previews, and gaming updates.
+
+✈️ 9. Travel & Booking
+Booking.com – Hotel and accommodation booking worldwide.
+
+Skyscanner – Flight comparison and travel deals.
+
+TripAdvisor – Reviews and recommendations for travel destinations.
+
+💼 10. Productivity & Tools
+Google Docs – Online document creation and collaboration.
+
+Notion – All-in-one workspace for notes, tasks, and databases.
+
+Trello – Project management tool using boards and cards.
+
+If you want, I can tailor this list (e.g., UK-focused sites, student-friendly tools, or niche categories like finance or AI).
+
+
+Please convert this out at into a html file with links.
+
+Here’s your list converted into a clean HTML file with clickable links. You can copy this into a .html file and open it in your browser:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .description {
+            margin-left: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
 
     <h1>Website Categories</h1>
 
-    <!-- Twitch Embed -->
-    <div class="twitch-wrapper">
-        <div class="twitch-video">
-            <iframe src="https://player.twitch.tv/?channel=EvaPilot1&parent=evapilot1.github.io" allowfullscreen></iframe>
-        </div>
-        <div class="twitch-chat">
-            <iframe src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=evapilot1.github.io"></iframe>
-        </div>
-    </div>
-
     <h2>1. Search Engines</h2>
     <ul>
-        <li><a href="https://www.google.com" target="_blank">Google</a> <span class="description">- Search engine</span></li>
-        <li><a href="https://www.bing.com" target="_blank">Bing</a> <span class="description">- Microsoft search</span></li>
-        <li><a href="https://duckduckgo.com" target="_blank">DuckDuckGo</a> <span class="description">- Private search</span></li>
+        <li><a href="https://www.google.com" target="_blank">Google</a><span class="description"> - The most widely used search engine.</span></li>
+        <li><a href="https://www.bing.com" target="_blank">Bing</a><span class="description"> - Microsoft’s search engine.</span></li>
+        <li><a href="https://duckduckgo.com" target="_blank">DuckDuckGo</a><span class="description"> - Privacy-focused search engine.</span></li>
     </ul>
 
     <h2>2. Entertainment & Streaming</h2>
@@ -188,8 +459,403 @@
         <li><a href="https://www.notion.so" target="_blank">Notion</a><span class="description"> - Workspace for notes and tasks.</span></li>
         <li><a href="https://trello.com" target="_blank">Trello</a><span class="description"> - Project management tool.</span></li>
     </ul>
-    
-<script>
+
+</body>
+</html>
+If you want, I can also:
+
+Add icons/logos 🎨
+
+Turn this into a styled modern webpage (cards, grid layout)
+
+Or make it downloadable as a file directly 👍
+
+
+Please can you embed a twitch stream at the top of the page?
+
+Here’s your updated HTML file with a Twitch stream embedded at the top. I’ve used Twitch’s official embed format—you just need to replace CHANNEL_NAME with the streamer you want.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .description {
+            margin-left: 10px;
+            color: #555;
+        }
+        .twitch-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        iframe {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Website Categories</h1>
+
+    <!-- Twitch Embed -->
+    <div class="twitch-container">
+        <iframe
+            src="https://player.twitch.tv/?channel=CHANNEL_NAME&parent=localhost"
+            height="400"
+            width="700"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <h2>1. Search Engines</h2>
+    <ul>
+        <li><a href="https://www.google.com" target="_blank">Google</a><span class="description"> - The most widely used search engine.</span></li>
+        <li><a href="https://www.bing.com" target="_blank">Bing</a><span class="description"> - Microsoft’s search engine.</span></li>
+        <li><a href="https://duckduckgo.com" target="_blank">DuckDuckGo</a><span class="description"> - Privacy-focused search engine.</span></li>
+    </ul>
+
+    <h2>2. Entertainment & Streaming</h2>
+    <ul>
+        <li><a href="https://www.youtube.com" target="_blank">YouTube</a><span class="description"> - Video-sharing platform.</span></li>
+        <li><a href="https://www.netflix.com" target="_blank">Netflix</a><span class="description"> - Streaming movies and TV shows.</span></li>
+        <li><a href="https://www.twitch.tv" target="_blank">Twitch</a><span class="description"> - Live streaming platform.</span></li>
+    </ul>
+
+    <!-- باقي الصفحة unchanged (rest of your categories stay the same) -->
+
+</body>
+</html>
+⚠️ Important Notes
+Replace CHANNEL_NAME with the Twitch channel (e.g. ninja)
+
+Replace parent=localhost with your actual domain when deploying:
+
+Example: parent=yourwebsite.com
+
+If you're just opening the file locally, localhost usually works
+
+If you want, I can:
+
+Auto-fill it with a real popular Twitch stream
+
+Make the player responsive (mobile-friendly)
+
+Add chat alongside the stream like Twitch’s full layout
+
+
+Please do that. The Twitch stream I would like to embed is EvaPilot1
+
+Here’s your updated HTML with the EvaPilot1 Twitch stream embedded, plus improvements:
+
+Channel already filled in
+
+Responsive (works on mobile)
+
+Twitch chat embedded alongside the stream
+
+Just copy this into your .html file:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .description {
+            margin-left: 10px;
+            color: #555;
+        }
+
+        /* Twitch layout */
+        .twitch-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .twitch-video {
+            flex: 2 1 600px;
+        }
+        .twitch-chat {
+            flex: 1 1 300px;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Website Categories</h1>
+
+    <!-- Twitch Embed -->
+    <div class="twitch-wrapper">
+        <!-- Video -->
+        <div class="twitch-video">
+            <iframe
+                src="https://player.twitch.tv/?channel=EvaPilot1&parent=localhost"
+                height="400"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Chat -->
+        <div class="twitch-chat">
+            <iframe
+                src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=localhost"
+                height="400">
+            </iframe>
+        </div>
+    </div>
+
+    <h2>1. Search Engines</h2>
+    <ul>
+        <li><a href="https://www.google.com" target="_blank">Google</a><span class="description"> - The most widely used search engine.</span></li>
+        <li><a href="https://www.bing.com" target="_blank">Bing</a><span class="description"> - Microsoft’s search engine.</span></li>
+        <li><a href="https://duckduckgo.com" target="_blank">DuckDuckGo</a><span class="description"> - Privacy-focused search engine.</span></li>
+    </ul>
+
+    <h2>2. Entertainment & Streaming</h2>
+    <ul>
+        <li><a href="https://www.youtube.com" target="_blank">YouTube</a><span class="description"> - Video-sharing platform.</span></li>
+        <li><a href="https://www.netflix.com" target="_blank">Netflix</a><span class="description"> - Streaming movies and TV shows.</span></li>
+        <li><a href="https://www.twitch.tv" target="_blank">Twitch</a><span class="description"> - Live streaming platform.</span></li>
+    </ul>
+
+    <!-- (rest of your categories continue unchanged) -->
+
+</body>
+</html>
+✅ What’s improved
+📱 Responsive layout (video + chat stack on smaller screens)
+
+💬 Live Twitch chat included
+
+🎥 Stream is pre-configured for EvaPilot1
+
+⚠️ Final step before publishing
+Replace:
+
+parent=localhost
+with your real domain, e.g.:
+
+parent=yourwebsite.com
+If you want next upgrades, I can:
+
+Make it a polished dashboard-style site
+
+Add dark mode 🌙
+
+Show “live/offline” status of the stream automatically
+
+
+Can you add dark mode and show the live/offline status?
+
+Here’s an upgraded version of your HTML that includes:
+
+🌙 Dark mode toggle (with saved preference)
+
+🔴 Live / Offline status indicator for EvaPilot1
+
+📱 Fully responsive layout (video + chat)
+
+Copy this into your .html file:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Categories</title>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --card: #f4f4f4;
+        }
+
+        body.dark {
+            --bg: #121212;
+            --text: #ffffff;
+            --card: #1e1e1e;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 20px;
+            transition: 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            border-bottom: 2px solid #888;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        a {
+            color: #4da3ff;
+            text-decoration: none;
+        }
+
+        .description {
+            color: #aaa;
+        }
+
+        /* Twitch layout */
+        .twitch-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .twitch-video {
+            flex: 2 1 600px;
+        }
+
+        .twitch-chat {
+            flex: 1 1 300px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .live {
+            color: red;
+        }
+
+        .offline {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <div id="status" class="status">Checking status...</div>
+    </div>
+
+    <h1>Website Categories</h1>
+
+    <!-- Twitch Embed -->
+    <div class="twitch-wrapper">
+        <div class="twitch-video">
+            <iframe src="https://player.twitch.tv/?channel=EvaPilot1&parent=localhost" allowfullscreen></iframe>
+        </div>
+        <div class="twitch-chat">
+            <iframe src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=localhost"></iframe>
+        </div>
+    </div>
+
+    <h2>1. Search Engines</h2>
+    <ul>
+        <li><a href="https://www.google.com" target="_blank">Google</a> <span class="description">- Search engine</span></li>
+        <li><a href="https://www.bing.com" target="_blank">Bing</a> <span class="description">- Microsoft search</span></li>
+        <li><a href="https://duckduckgo.com" target="_blank">DuckDuckGo</a> <span class="description">- Private search</span></li>
+    </ul>
+
+    <!-- باقي الصفحة continues -->
+
+    <script>
         // Dark mode toggle
         function toggleDarkMode() {
             document.body.classList.toggle("dark");
@@ -224,6 +890,291 @@
         checkLiveStatus();
         setInterval(checkLiveStatus, 60000); // refresh every minute
     </script>
+
+</body>
+</html>
+⚡ What you now have
+🌙 Dark mode toggle (remembers user preference)
+
+🔴 Auto-updating LIVE indicator
+
+💬 Twitch chat + video side-by-side
+
+📱 Mobile-friendly layout
+
+⚠️ Important (deployment)
+Before hosting, change:
+
+parent=localhost
+to your real domain (e.g. parent=mysite.com), otherwise Twitch embeds may not work.
+
+If you want to go even further, I can:
+
+Add a “Go Live” notification popup
+
+Show viewer count + stream title
+
+Turn this into a full streamer dashboard page 🎮
+
+
+Can you put all of my categories into a card?
+
+Nice idea—that’ll make the page feel much more modern and organised.
+
+Here’s your upgraded HTML where each category is displayed as a card layout, while keeping:
+
+🌙 Dark mode
+
+🔴 Live status for EvaPilot1
+
+🎥 Twitch embed + chat
+
+✅ Updated HTML (Card Layout)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Categories</title>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000;
+            --card: #f4f4f4;
+        }
+
+        body.dark {
+            --bg: #121212;
+            --text: #fff;
+            --card: #1e1e1e;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 20px;
+            transition: 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .status.live { color: red; }
+        .status.offline { color: gray; }
+
+        /* Twitch */
+        .twitch-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .twitch-video { flex: 2 1 600px; }
+        .twitch-chat { flex: 1 1 300px; }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Card grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            margin: 8px 0;
+        }
+
+        a {
+            color: #4da3ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .description {
+            display: block;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div id="status" class="status">Checking status...</div>
+</div>
+
+<h1>Website Categories</h1>
+
+<!-- Twitch -->
+<div class="twitch-wrapper">
+    <div class="twitch-video">
+        <iframe src="https://player.twitch.tv/?channel=EvaPilot1&parent=localhost"></iframe>
+    </div>
+    <div class="twitch-chat">
+        <iframe src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=localhost"></iframe>
+    </div>
+</div>
+
+<!-- Cards -->
+<div class="grid">
+
+    <div class="card">
+        <h2>Search Engines</h2>
+        <ul>
+            <li><a href="https://google.com">Google</a><span class="description">Search engine</span></li>
+            <li><a href="https://bing.com">Bing</a><span class="description">Microsoft search</span></li>
+            <li><a href="https://duckduckgo.com">DuckDuckGo</a><span class="description">Private search</span></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Entertainment</h2>
+        <ul>
+            <li><a href="https://youtube.com">YouTube</a><span class="description">Videos</span></li>
+            <li><a href="https://netflix.com">Netflix</a><span class="description">Streaming</span></li>
+            <li><a href="https://twitch.tv">Twitch</a><span class="description">Live streams</span></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Shopping</h2>
+        <ul>
+            <li><a href="https://amazon.com">Amazon</a></li>
+            <li><a href="https://ebay.com">eBay</a></li>
+            <li><a href="https://etsy.com">Etsy</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Social Media</h2>
+        <ul>
+            <li><a href="https://facebook.com">Facebook</a></li>
+            <li><a href="https://instagram.com">Instagram</a></li>
+            <li><a href="https://twitter.com">X</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Education</h2>
+        <ul>
+            <li><a href="https://khanacademy.org">Khan Academy</a></li>
+            <li><a href="https://coursera.org">Coursera</a></li>
+            <li><a href="https://edx.org">edX</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>News</h2>
+        <ul>
+            <li><a href="https://bbc.com/news">BBC</a></li>
+            <li><a href="https://theguardian.com">Guardian</a></li>
+            <li><a href="https://cnn.com">CNN</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Development</h2>
+        <ul>
+            <li><a href="https://github.com">GitHub</a></li>
+            <li><a href="https://stackoverflow.com">Stack Overflow</a></li>
+            <li><a href="https://developer.mozilla.org">MDN</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Gaming</h2>
+        <ul>
+            <li><a href="https://store.steampowered.com">Steam</a></li>
+            <li><a href="https://ign.com">IGN</a></li>
+            <li><a href="https://gamespot.com">GameSpot</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Travel</h2>
+        <ul>
+            <li><a href="https://booking.com">Booking</a></li>
+            <li><a href="https://skyscanner.net">Skyscanner</a></li>
+            <li><a href="https://tripadvisor.com">TripAdvisor</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Productivity</h2>
+        <ul>
+            <li><a href="https://docs.google.com">Docs</a></li>
+            <li><a href="https://notion.so">Notion</a></li>
+            <li><a href="https://trello.com">Trello</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+}
+
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+}
+
+async function checkLiveStatus() {
+    const el = document.getElementById("status");
+    try {
+        const res = await fetch("https://decapi.me/twitch/uptime/EvaPilot1");
+        const text = await res.text();
+
+        if (text.includes("offline")) {
+            el.textContent = "● Offline";
+            el.className = "status offline";
+        } else {
+            el.textContent = "● LIVE";
+            el.className = "status live";
+        }
+    } catch {
+        el.textContent = "Status unavailable";
+    }
+}
+
+checkLiveStatus();
+setInterval(checkLiveStatus, 60000);
+</script>
 
 </body>
 </html>
