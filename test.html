@@ -160,7 +160,8 @@ async function fetchGamingStats() {
 
             lastGame = "Last Played: " + (dataGames.response.games[0]?.name || "N/A");
         }
-        steamAch = `Steam: ${totalSteamAch.toLocaleString()} achievements`;
+        steamAch = `
+        <a href="#" target="_blank">Steam:</a> ${totalSteamAch.toLocaleString()} achievements`;
     } catch (err) {
         console.error("Steam error:", err);
     }
@@ -169,7 +170,8 @@ async function fetchGamingStats() {
     try {
         const res = await fetch(`https://retroachievements.org/API/API_GetUserSummary.php?u=${retroUsername}&format=json`);
         const data = await res.json();
-        retroAch = `RetroAchievements: ${data.TotalAchievements.toLocaleString()} achievements`;
+        retroAch = `
+        <a href="#" target="_blank">RetroAchievements:</a> ${data.TotalAchievements.toLocaleString()} achievements`;
     } catch (err) {
         console.error("RetroAchievements error:", err);
     }
