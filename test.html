@@ -132,16 +132,16 @@
 #gamingStats {
   font-weight: bold;
   font-size: 0.95rem;
-  color: #a78bfa; /* purple */
+  color: #ec4899; /* pink */
 }
 
 #gamingStats a {
-  color: #a78bfa;
+  color: #ec4899;
   text-decoration: none;
 }
 
 #gamingStats a:hover {
-  color: #ec4899; /* pink */
+  color: #6d28d9; /* pink */
 }
 </style>
 
@@ -150,11 +150,13 @@
 // Steam
 const steamAPIKey = "98C6D6FF6319188D4C157F30F1EBB088"; // replace with your Steam API key
 const steamID = "76561198055817286";      // your SteamID64
+const steamProfileURL = "https://steamcommunity.com/id/EvaPilot1/";
 
 // RetroAchievements
 const retroUser = "EvaPilot1";     // your RA login
 const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ";       // your RA API key
 const retroProfile = "EvaPilot1";         // public RA profile name
+const retroProfileURL = `https://retroachievements.org/user/${retroProfile}`;
 
 // ---- Fetch Steam stats ----
 async function fetchSteamStats() {
@@ -201,11 +203,11 @@ async function updateGamingStats() {
 
   let steamText = steam
     ? `Steam Last Played: <strong>${steam.lastGame}</strong> (${steam.hours2w}h last 2 weeks)`
-    : "Steam stats unavailable";
+    : `<a href="${steamProfileURL}" target="_blank">Steam stats unavailable</a>`;
 
   let retroText = retro !== null
-    ? `<a href="https://retroachievements.org/user/${retroProfile}" target="_blank">RA: ${retro.toLocaleString()} points</a>`
-    : "RA stats unavailable";
+    ? `<a href="${retroProfileURL}" target="_blank">RA: ${retro.toLocaleString()} points</a>`
+    : `<a href="${retroProfileURL}" target="_blank">RA stats unavailable</a>`;
 
   el.innerHTML = `${steamText} | ${retroText}`;
 }
