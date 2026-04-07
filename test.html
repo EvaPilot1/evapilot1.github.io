@@ -153,7 +153,7 @@ async function fetchRetroPoints() {
 // ==== Fetch Steam last played game via DecAPI (CORS-friendly) ====
 async function fetchSteamLastPlayed() {
     try {
-        const res = await fetch(`https://decapi.me/steam/lastplayed/EvaPilot1`);
+        const res = await fetch(`https://decapi.me/steam/lastplayed/vanity/EvaPilot1`);
         const text = await res.text();
         return text || null;
     } catch(err) {
