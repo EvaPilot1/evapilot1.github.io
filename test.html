@@ -134,6 +134,7 @@
 
     <span>Last Played: <span id="lastGame">Loading...</span></span>
 </center>
+
 <script>
 // ==== CONFIG ====
 const steamUsername = "EvaPilot1";           // Your Steam custom URL
@@ -187,6 +188,16 @@ async function updateGamingStats() {
         const data = await res.json();
 
         retroEl.textContent = `${data.TotalAchievements.toLocaleString()} achievements`;
+
+    } catch (err) {
+        console.error("RetroAchievements API error:", err);
+        retroEl.textContent = "Unavailable";
+    }
+}
+
+// ---- Initialize ----
+updateGamingStats();
+</script>
 
     
     
