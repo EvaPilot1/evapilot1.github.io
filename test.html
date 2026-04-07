@@ -125,63 +125,44 @@
 
     
 <center>
-  <a href="https://steamcommunity.com/id/EvaPilot1/" target="_blank">Steam:</a>
-  <span id="steamScore">Loading...</span> |
+  <!-- Steam -->
+  <a href="https://steamcommunity.com/id/EvaPilot1/" target="_blank">
+    Steam
+  </a>: <span id="steamScore">View profile</span> |
 
-  <a href="https://retroachievements.org/user/EvaPilot1" target="_blank">RetroAchievements:</a>
-  <span id="retroScore">Loading...</span> |
+  <!-- RetroAchievements -->
+  <a href="https://retroachievements.org/user/EvaPilot1" target="_blank">
+    RetroAchievements
+  </a>: <span id="retroScore">Loading...</span> |
 
-  <span>Last Played: <span id="lastGame">Loading...</span></span>
-</center><br>
+  <!-- Last Played -->
+  <span>Last Played: <span id="lastGame">View Steam</span></span>
+</center>
 
 <script>
 // ==== CONFIG ====
-const tsaUsername = "EvaPilot1";
-const retroUsername = "EvaPilot1";
+const retroUser = "EvaPilot1";   // your RA login name
+const retroKey = "YOUR_RA_API_KEY";    // your RA API key
+const profileUser = "EvaPilot1";       // your public profile name
 
-// ---- Fetch TrueSteamAchievements ----
-async function fetchSteamStats() {
-  const steamEl = document.getElementById("steamScore");
-  const lastGameEl = document.getElementById("lastGame");
-
-  try {
-    const res = await fetch(`https://api.truesteamachievements.com/v1/gamer/${tsaUsername}`);
-    const data = await res.json();
-
-    // TSA score (points)
-    const score = data.gamer.stats?.trueScore || 0;
-    steamEl.textContent = `${score.toLocaleString()} TSA score`;
-
-    // Last played game
-    const lastGame = data.gamer.lastPlayedGame?.gameName || "N/A";
-    lastGameEl.textContent = lastGame;
-
-  } catch (err) {
-    console.error("TSA error:", err);
-    steamEl.textContent = "Unavailable";
-    lastGameEl.textContent = "Unavailable";
-  }
-}
-
-// ---- Fetch RetroAchievements points ----
+// ---- RetroAchievements (WORKING) ----
 async function fetchRetroStats() {
-  const retroEl = document.getElementById("retroScore");
+  const el = document.getElementById("retroScore");
 
   try {
-    const res = await fetch(`https://retroachievements.org/API/API_GetUserProfile.php?u=${retroUsername}`);
+    const res = await fetch(
+      `https://retroachievements.org/API/API_GetUserProfile.php?z=${retroUser}&y=${retroKey}&u=${profileUser}`
+    );
     const data = await res.json();
 
-    const points = data.TotalPoints || 0;
-    retroEl.textContent = `${points.toLocaleString()} points`;
+    el.textContent = `${data.TotalPoints.toLocaleString()} points`;
 
   } catch (err) {
-    console.error("RetroAchievements error:", err);
-    retroEl.textContent = "Unavailable";
+    console.error(err);
+    el.textContent = "Unavailable";
   }
 }
 
-// ---- Initialize ----
-fetchSteamStats();
 fetchRetroStats();
 </script>
 
