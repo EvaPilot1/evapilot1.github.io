@@ -1,6 +1,8 @@
 name: Update Gaming Stats
 
-# Trigger daily at midnight UTC and allow manual run
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -35,7 +37,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add steam.json tsa.json
-          git commit -m "Automated update of gaming stats"
+          git diff --cached --quiet || git commit -m "Automated update of gaming stats"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
