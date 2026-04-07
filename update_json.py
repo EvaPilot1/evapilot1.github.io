@@ -11,7 +11,7 @@ tsa_user = "EvaPilot1"              # Your TrueSteamAchievements username
 tsa_json_file = "tsa.json"
 
 # ===== STEAM LAST PLAYED =====
-steam_xml_url = f"https://steamcommunity.com/id/{steam_profile_id}/?xml=1"
+steam_xml_url = f"https://steamcommunity.com/id/EvaPilot1/?xml=1"
 
 try:
     res = requests.get(steam_xml_url)
@@ -37,7 +37,7 @@ with open(steam_json_file, "w") as f:
 print(f"Updated {steam_json_file}")
 
 # ===== TSA STATS =====
-tsa_api_url = f"https://truesteamachievements.com/api/userstats/{tsa_user}.json"
+tsa_api_url = f"https://truesteamachievements.com/api/userstats/EvaPilot1.json"
 
 try:
     res = requests.get(tsa_api_url)
