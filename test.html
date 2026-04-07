@@ -167,12 +167,14 @@ async function fetchSteamStats() {
 // ---- Fetch RetroAchievements stats ----
 async function fetchRetroAchievements() {
     const retroEl = document.getElementById("retroAch");
+
     try {
-        const res = await fetch(`https://retroachievements.org/API/API_GetUserSummary.php?u=${retroUsername}&format=json`);
+        const res = await fetch(`https://retroachievements.org/API/API_GetUserProfile.php?u=EvaPilot1`);
         const data = await res.json();
 
         const totalRetro = data.TotalAchievements || 0;
         retroEl.textContent = `${totalRetro.toLocaleString()} achievements`;
+
     } catch (err) {
         console.error("RetroAchievements API error:", err);
         retroEl.textContent = "Unavailable";
