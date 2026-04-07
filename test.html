@@ -147,56 +147,39 @@
 
 <script>
 // ==== CONFIG ====
-const steamAPIKey = "98C6D6FF6319188D4C157F30F1EBB088";
-const steamVanity = "EvaPilot1";
-const retroUser = "EvaPilot1";   // your RA login
-const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ";     // your RA API key
-const retroProfile = "EvaPilot1";       // public RA profile name
+// Steam
+const steamAPIKey = "98C6D6FF6319188D4C157F30F1EBB088"; // replace with your Steam API key
+const steamID = "76561198055817286";      // your SteamID64
 
-// ---- Get SteamID ----
-async function getSteamID() {
-  const res = await fetch(`https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key=${steamAPIKey}&vanityurl=${steamVanity}`);
-  const data = await res.json();
-  return data.response.steamid;
-}
+// RetroAchievements
+const retroUser = "EvaPilot1";     // your RA login
+const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ";       // your RA API key
+const retroProfile = "EvaPilot1";         // public RA profile name
 
-// ---- Steam Stats ----
-async function getSteamStats() {
+// ---- Fetch Steam stats ----
+async function fetchSteamStats() {
   try {
-    const steamID = await getSteamID();
+    const res = await fetch(`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${steamAPIKey}&steamid=${steamID}`);
+    const data = await res.json();
 
-    const [recentRes, gamesRes] = await Promise.all([
-      fetch(`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${steamAPIKey}&steamid=${steamID}`),
-      fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${steamAPIKey}&steamid=${steamID}`)
-    ]);
+    let lastGame = "No recent games";
+    let hours2w = 0;
 
-    const recentData = await recentRes.json();
-    const gamesData = await gamesRes.json();
-
-    const totalGames = gamesData.response.game_count || 0;
-
-    let lastGame = "None";
-    let hours = 0;
-
-    if (recentData.response.games?.length) {
-      const game = recentData.response.games[0];
+    if (data.response.games && data.response.games.length > 0) {
+      const game = data.response.games[0];
       lastGame = game.name;
-      hours = (game.playtime_2weeks / 60).toFixed(1);
+      hours2w = (game.playtime_2weeks / 60).toFixed(1);
     }
 
-    return {
-      totalGames,
-      lastGame,
-      hours
-    };
-
-  } catch {
+    return { lastGame, hours2w };
+  } catch(err) {
+    console.error("Steam API error:", err);
     return null;
   }
 }
 
-// ---- RetroAchievements ----
-async function getRetroStats() {
+// ---- Fetch RetroAchievements points ----
+async function fetchRetroStats() {
   try {
     const res = await fetch(
       `https://retroachievements.org/API/API_GetUserProfile.php?z=${retroUser}&y=${retroKey}&u=${retroProfile}`
@@ -204,39 +187,25 @@ async function getRetroStats() {
     const data = await res.json();
 
     return data.TotalPoints || 0;
-
-  } catch {
+  } catch(err) {
+    console.error("RetroAchievements API error:", err);
     return null;
   }
 }
 
-// ---- Combine everything ----
+// ---- Combine and display ----
 async function updateGamingStats() {
   const el = document.getElementById("gamingStats");
 
-  const [steam, retro] = await Promise.all([
-    getSteamStats(),
-    getRetroStats()
-  ]);
+  const [steam, retro] = await Promise.all([fetchSteamStats(), fetchRetroStats()]);
 
-  let steamText = "Steam unavailable";
-  let retroText = "RA unavailable";
+  let steamText = steam
+    ? `Steam Last Played: <strong>${steam.lastGame}</strong> (${steam.hours2w}h last 2 weeks)`
+    : "Steam stats unavailable";
 
-  if (steam) {
-    steamText = `
-      <a href="https://steamcommunity.com/id/${steamVanity}" target="_blank">
-        Steam: ${steam.totalGames} games
-      </a> | Last Played: ${steam.lastGame} (${steam.hours}h)
-    `;
-  }
-
-  if (retro !== null) {
-    retroText = `
-      <a href="https://retroachievements.org/user/${retroProfile}" target="_blank">
-        RA: ${retro.toLocaleString()} points
-      </a>
-    `;
-  }
+  let retroText = retro !== null
+    ? `<a href="https://retroachievements.org/user/${retroProfile}" target="_blank">RA: ${retro.toLocaleString()} points</a>`
+    : "RA stats unavailable";
 
   el.innerHTML = `${steamText} | ${retroText}`;
 }
@@ -244,7 +213,6 @@ async function updateGamingStats() {
 // Run it
 updateGamingStats();
 </script>
-
     
     
 <!-- Cards -->
