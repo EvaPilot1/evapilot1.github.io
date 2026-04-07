@@ -14,15 +14,21 @@ tsa_json_file = "tsa.json"
 steam_xml_url = f"https://steamcommunity.com/id/EvaPilot1/?xml=1"
 
 try:
-    res = requests.get(steam_xml_url)
-    if res.status_code == 200:
-        xml = res.text
-        # Extract most recent game played
-        match = re.search(r"<mostRecentGame>(.*?)</mostRecentGame>", xml)
-        last_game = match.group(1) if match else "No recent game"
-    else:
-        last_game = "Unavailable"
-except:
+    res = requests.get(steam_xml_url, timeout=10)
+    res.raise_for_status()
+    xml = res.text
+
+    # Extract first game from mostPlayedGames
+    match = re.search(
+        r"<mostPlayedGame>.*?<gameName>\s*<!\[CDATA\[(.*?)\]\]>\s*</gameName>",
+        xml,
+        re.DOTALL
+    )
+
+    last_game = match.group(1) if match else "No recent activity"
+
+except Exception as e:
+    print("Steam XML error:", e)
     last_game = "Unavailable"
 
 steam_data = {
