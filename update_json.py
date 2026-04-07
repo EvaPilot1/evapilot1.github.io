@@ -60,5 +60,3 @@ with open(tsa_json_file, "w") as f:
     json.dump(tsa_data, f, indent=2)
 
 print(f"Updated {tsa_json_file}")
-print("Steam XML preview:", xml[:500])
-print("TSA response:", data)
