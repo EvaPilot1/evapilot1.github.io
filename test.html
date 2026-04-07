@@ -125,26 +125,71 @@
 
     
     
-<center>
-  <!-- Steam -->
-  <a href="https://steamcommunity.com/id/EvaPilot1" target="_blank">
-    Steam:
-    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/placeholder.png" 
-         alt="Steam Profile" 
-         style="height:16px; vertical-align:middle;">
-  </a> |
+<div class="card" id="achievementsCard">
+  <h2>Gaming Achievements</h2>
+  <p class="achievements-line">
+    <!-- Steam -->
+    <a href="https://steamcommunity.com/id/EvaPilot1" target="_blank" class="steam-link">
+      <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/0000000000000000000000000000000000000000_full.jpg" 
+           alt="Steam Profile" class="icon">
+      Steam
+    </a>: <span id="steamAch">Click to view</span> |
 
-  <!-- RetroAchievements -->
-  <a href="https://retroachievements.org/user/EvaPilot1" target="_blank">
-    RetroAchievements:
-  </a>
-  <span id="retroAch">Loading...</span>
-</center>
+    <!-- RetroAchievements -->
+    <a href="https://retroachievements.org/user/EvaPilot1" target="_blank" class="retro-link">
+      <img src="https://retroachievements.org/images/RA_Icon.png" alt="RA Icon" class="icon">
+      RetroAchievements
+    </a>: <span id="retroAch">Loading...</span> |
+
+    <!-- Last Played -->
+    <span>Last Played: <span id="lastGame">Steam profile</span></span>
+  </p>
+</div>
+
+<style>
+.card {
+  background-color: var(--card-bg, #1e1e2f);
+  color: var(--text, #ddd);
+  padding: 12px 16px;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 12px auto;
+  font-family: sans-serif;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.achievements-line {
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.achievements-line a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.achievements-line a:hover {
+  color: #a78bfa; /* purple highlight */
+}
+
+.icon {
+  height: 18px;
+  width: 18px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+</style>
 
 <script>
-// ---- RetroAchievements live total ----
-const retroUsername = "EvaPilot1"; // RetroAchievements username
+// ==== CONFIG ====
+const retroUsername = "EvaPilot1";
 
+// ---- Fetch RetroAchievements total ----
 async function updateRetroAchievements() {
   const retroEl = document.getElementById("retroAch");
   retroEl.textContent = "Loading...";
@@ -157,7 +202,7 @@ async function updateRetroAchievements() {
   }
 }
 
-// Initialize
+// ---- Initialize ----
 updateRetroAchievements();
 </script>
     
