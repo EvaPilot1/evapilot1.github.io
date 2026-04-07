@@ -126,26 +126,28 @@
     
     
 <center>
-  <a href="https://steamcommunity.com/id/EvaPilot1/" target="_blank">Steam:</a>
-  <span id="steamAch">Loading...</span> |
+  <!-- Steam -->
+  <a href="https://steamcommunity.com/id/EvaPilot1" target="_blank">
+    Steam:
+    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/placeholder.png" 
+         alt="Steam Profile" 
+         style="height:16px; vertical-align:middle;">
+  </a> |
 
-  <a href="https://retroachievements.org/user/EvaPilot1" target="_blank">RetroAchievements:</a>
-  <span id="retroAch">Loading...</span> |
-
-  <span>Last Played: <span id="lastGame">Loading...</span></span>
-</center><br>
+  <!-- RetroAchievements -->
+  <a href="https://retroachievements.org/user/EvaPilot1" target="_blank">
+    RetroAchievements:
+  </a>
+  <span id="retroAch">Loading...</span>
+</center>
 
 <script>
-// ==== CONFIG ====
-const steamProfile = "EvaPilot1";  // Steam vanity URL
-const retroUsername = "EvaPilot1";  // RetroAchievements username
+// ---- RetroAchievements live total ----
+const retroUsername = "EvaPilot1"; // RetroAchievements username
 
-async function updateStats() {
-  const steamEl = document.getElementById("steamAch");
+async function updateRetroAchievements() {
   const retroEl = document.getElementById("retroAch");
-  const lastGameEl = document.getElementById("lastGame");
-
-  // ---- RetroAchievements ----
+  retroEl.textContent = "Loading...";
   try {
     const res = await fetch(`https://retroachievements.org/API/API_GetUserSummary.php?u=${retroUsername}&format=json`);
     const data = await res.json();
@@ -153,38 +155,10 @@ async function updateStats() {
   } catch {
     retroEl.textContent = "Unavailable";
   }
-
-  // ---- Steam (public widget scrape) ----
-  try {
-    const res = await fetch(`https://steamcommunity.com/id/${steamProfile}/games/?tab=all&xml=1`);
-    const text = await res.text();
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(text, "text/xml");
-
-    const games = xmlDoc.getElementsByTagName("game");
-    let totalAch = 0;
-    let lastGame = "N/A";
-
-    for (let i = 0; i < games.length; i++) {
-      const game = games[i];
-      const ap = parseInt(game.getElementsByTagName("achievements")[0].textContent) || 0;
-      totalAch += ap;
-
-      // Most recently played game
-      if (i === 0) lastGame = game.getElementsByTagName("name")[0].textContent;
-    }
-
-    steamEl.textContent = `${totalAch.toLocaleString()} achievements`;
-    lastGameEl.textContent = lastGame;
-
-  } catch {
-    steamEl.textContent = "Unavailable";
-    lastGameEl.textContent = "Unavailable";
-  }
 }
 
 // Initialize
-updateStats();
+updateRetroAchievements();
 </script>
     
     
