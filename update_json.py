@@ -46,21 +46,37 @@ print(f"Updated {steam_json_file}")
 tsa_api_url = f"https://truesteamachievements.com/api/userstats/EvaPilot1.json"
 
 try:
-    res = requests.get(tsa_api_url)
+    res = requests.get(tsa_api_url, timeout=10)
+    res.raise_for_status()
     data = res.json()
-    tsa_data = {
-        "profile_url": f"https://truesteamachievements.com/user/EvaPilot1",
-        "total_achievements": data.get("totalAchievements", 0),
-        "total_points": data.get("totalPoints", 0),
-        "updated": datetime.utcnow().isoformat()
-    }
-except:
-    tsa_data = {
-        "profile_url": f"https://truesteamachievements.com/user/EvaPilot1",
-        "total_achievements": 0,
-        "total_points": 0,
-        "updated": datetime.utcnow().isoformat()
-    }
+
+    total_achievements = data.get("totalAchievements", 0)
+    total_points = data.get("totalPoints", 0)
+
+    # 🚨 If API returns garbage, DON'T overwrite good data
+    if total_points == 0:
+        raise Exception("TSA returned 0 or invalid data")
+
+except Exception as e:
+    print("TSA API error:", e)
+
+    # ✅ Load existing values instead of wiping them
+    try:
+        with open(tsa_json_file, "r") as f:
+            existing = json.load(f)
+            total_achievements = existing.get("total_achievements", 0)
+            total_points = existing.get("total_points", 0)
+    except:
+        total_achievements = 0
+        total_points = 0
+
+# Save (always writes something valid)
+tsa_data = {
+    "profile_url": f"https://truesteamachievements.com/user/{tsa_user}",
+    "total_achievements": total_achievements,
+    "total_points": total_points,
+    "updated": datetime.utcnow().isoformat()
+}
 
 with open(tsa_json_file, "w") as f:
     json.dump(tsa_data, f, indent=2)
