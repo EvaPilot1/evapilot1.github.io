@@ -126,64 +126,63 @@
     
 <center>
   <a href="https://steamcommunity.com/id/EvaPilot1/" target="_blank">Steam:</a>
-  <span id="steamAch">Loading...</span> |
+  <span id="steamScore">Loading...</span> |
 
   <a href="https://retroachievements.org/user/EvaPilot1" target="_blank">RetroAchievements:</a>
-  <span id="retroAch">Loading...</span> |
+  <span id="retroScore">Loading...</span> |
 
-  <span>Last Played: <span id="lastGame">Loading...</span></span><br>
-</center><br>
+  <span>Last Played: <span id="lastGame">Loading...</span></span>
+</center>
 
 <script>
 // ==== CONFIG ====
-const tsaUsername = "EvaPilot1";   // TrueSteamAchievements username
-const retroUsername = "EvaPilot1"; // RetroAchievements username
+const tsaUsername = "EvaPilot1";
+const retroUsername = "EvaPilot1";
 
-// ---- Fetch Steam stats from TrueSteamAchievements ----
+// ---- Fetch TrueSteamAchievements ----
 async function fetchSteamStats() {
-    const steamEl = document.getElementById("steamAch");
-    const lastGameEl = document.getElementById("lastGame");
+  const steamEl = document.getElementById("steamScore");
+  const lastGameEl = document.getElementById("lastGame");
 
-    try {
-        // TSA public API endpoint
-        const res = await fetch(`https://api.truesteamachievements.com/v1/gamer/${tsaUsername}?format=json`);
-        const data = await res.json();
+  try {
+    const res = await fetch(`https://api.truesteamachievements.com/v1/gamer/${tsaUsername}`);
+    const data = await res.json();
 
-        // Total achievements
-        const totalAch = data.gamer.stats.achievementsEarned || 0;
-        steamEl.textContent = `${totalAch.toLocaleString()} achievements`;
+    // TSA score (points)
+    const score = data.gamer.stats?.trueScore || 0;
+    steamEl.textContent = `${score.toLocaleString()} TSA score`;
 
-        // Last played game
-        const lastGame = data.gamer.lastPlayedGame?.gameName || "N/A";
-        lastGameEl.textContent = lastGame;
+    // Last played game
+    const lastGame = data.gamer.lastPlayedGame?.gameName || "N/A";
+    lastGameEl.textContent = lastGame;
 
-    } catch (err) {
-        console.error("TSA API error:", err);
-        steamEl.textContent = "Unavailable";
-        lastGameEl.textContent = "Unavailable";
-    }
+  } catch (err) {
+    console.error("TSA error:", err);
+    steamEl.textContent = "Unavailable";
+    lastGameEl.textContent = "Unavailable";
+  }
 }
 
-// ---- Fetch RetroAchievements stats ----
-async function fetchRetroAchievements() {
-    const retroEl = document.getElementById("retroAch");
+// ---- Fetch RetroAchievements points ----
+async function fetchRetroStats() {
+  const retroEl = document.getElementById("retroScore");
 
-    try {
-        const res = await fetch(`https://retroachievements.org/API/API_GetUserProfile.php?u=EvaPilot1`);
-        const data = await res.json();
+  try {
+    const res = await fetch(`https://retroachievements.org/API/API_GetUserProfile.php?u=${retroUsername}`);
+    const data = await res.json();
 
-        const totalRetro = data.TotalAchievements || 0;
-        retroEl.textContent = `${totalRetro.toLocaleString()} achievements`;
+    const points = data.TotalPoints || 0;
+    retroEl.textContent = `${points.toLocaleString()} points`;
 
-    } catch (err) {
-        console.error("RetroAchievements API error:", err);
-        retroEl.textContent = "Unavailable";
-    }
+  } catch (err) {
+    console.error("RetroAchievements error:", err);
+    retroEl.textContent = "Unavailable";
+  }
 }
 
 // ---- Initialize ----
 fetchSteamStats();
-fetchRetroAchievements();
+fetchRetroStats();
 </script>
 
     
