@@ -316,9 +316,25 @@ updateGamingStats();
 <li><a href="https://tidal.com" target="_blank">Tidal</a> <span class="description">High-fidelity music</span></li>
 <li><a href="https://www.last.fm" target="_blank">Last.fm</a> <span class="description">Music tracking & discovery</span></li>
 <li><a href="https://www.shazam.com" target="_blank">Shazam</a> <span class="description">Identify songs</span></li>
-<li><a href="https://www.deezer.com" target="_blank">Deezer</a> <span class="description">Streaming & playlists</span></li>
+<li><a href="#" onclick="toggleRainwave(); return false;">🎵 Rainwave</a><span class="description">Play / Pause game music radio</span></li>
+
+        
+<audio id="rainwavePlayer" src="https://relay.rainwave.cc/game.ogg"></audio>
+
+<script>
+function toggleRainwave() {
+  const audio = document.getElementById("rainwavePlayer");
+
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
+</script>
     </ul>
 
+        
     <!-- Reading -->
     <hr><br><h2>📚 Reading</h2>
     <ul>
