@@ -102,13 +102,14 @@
 
 <div class="controls">
     <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <button onclick="toggleTwitch()">Hide Twitch</button>
     <div id="status" class="status">Checking status...</div>
 </div>
 
 <h1>Website Categories</h1>
 
 <!-- Twitch -->
-<div class="twitch-wrapper">
+<div id="twitchSection" class="twitch-wrapper">
     <div class="twitch-video">
         <iframe src="https://player.twitch.tv/?channel=EvaPilot1&parent=evapilot.github.io"></iframe>
     </div>
@@ -195,6 +196,33 @@
 </div>
 
 <script>
+function toggleTwitch() {
+    const section = document.getElementById("twitchSection");
+    const button = event.target;
+
+    if (section.style.display === "none") {
+        section.style.display = "flex";
+        button.textContent = "Hide Twitch";
+        localStorage.setItem("twitchHidden", "false");
+    } else {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+        localStorage.setItem("twitchHidden", "true");
+    }
+}
+
+// Load saved preference
+window.addEventListener("DOMContentLoaded", () => {
+    const hidden = localStorage.getItem("twitchHidden") === "true";
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    if (hidden) {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+    }
+});
+    
 function toggleDarkMode() {
     document.body.classList.toggle("dark");
     localStorage.setItem("darkMode", document.body.classList.contains("dark"));
