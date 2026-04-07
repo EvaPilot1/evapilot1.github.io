@@ -128,91 +128,66 @@
   <span id="gamingStats">Loading gaming stats...</span>
 </center><br>
 
-<style>
-#gamingStats {
-  font-weight: bold;
-  font-size: 0.95rem;
-  color: #ec4899; /* pink */
-}
-
-#gamingStats a {
-  color: #ec4899;
-  text-decoration: none;
-}
-
-#gamingStats a:hover {
-  color: #6d28d9; /* pink */
-}
-</style>
-
 <script>
-// ==== CONFIG ====
-// Steam
-const steamAPIKey = "98C6D6FF6319188D4C157F30F1EBB088"; // replace with your Steam API key
-const steamID = "76561198055817286";      // your SteamID64
+// === CONFIG ===
 const steamProfileURL = "https://steamcommunity.com/id/EvaPilot1/";
+const retroProfileURL = "https://retroachievements.org/user/EvaPilot1";
+const retroUser = "EvaPilot1";
+const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ"; // your RetroAchievements API key
+const tsaUsername = "EvaPilot1";     // your TrueSteamAchievements username
 
-// RetroAchievements
-const retroUser = "EvaPilot1";     // your RA login
-const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ";       // your RA API key
-const retroProfile = "EvaPilot1";         // public RA profile name
-const retroProfileURL = `https://retroachievements.org/user/${retroProfile}`;
-
-// ---- Fetch Steam stats ----
-async function fetchSteamStats() {
-  try {
-    const res = await fetch(`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${steamAPIKey}&steamid=${steamID}`);
-    const data = await res.json();
-
-    let lastGame = "No recent games";
-    let hours2w = 0;
-
-    if (data.response.games && data.response.games.length > 0) {
-      const game = data.response.games[0];
-      lastGame = game.name;
-      hours2w = (game.playtime_2weeks / 60).toFixed(1);
+// === Fetch RetroAchievements points ===
+async function fetchRetroPoints() {
+    try {
+        const res = await fetch(
+            `https://retroachievements.org/API/API_GetUserProfile.php?z=${retroUser}&y=${retroKey}&u=${retroUser}`
+        );
+        const data = await res.json();
+        return data.TotalPoints || 0;
+    } catch(err) {
+        console.error("RetroAchievements error:", err);
+        return null;
     }
-
-    return { lastGame, hours2w };
-  } catch(err) {
-    console.error("Steam API error:", err);
-    return null;
-  }
 }
 
-// ---- Fetch RetroAchievements points ----
-async function fetchRetroStats() {
-  try {
-    const res = await fetch(
-      `https://retroachievements.org/API/API_GetUserProfile.php?z=${retroUser}&y=${retroKey}&u=${retroProfile}`
-    );
-    const data = await res.json();
-
-    return data.TotalPoints || 0;
-  } catch(err) {
-    console.error("RetroAchievements API error:", err);
-    return null;
-  }
+// === Fetch TSA points & last unlocked achievement ===
+async function fetchTsaStats() {
+    try {
+        const res = await fetch(`https://www.truesteamachievements.com/api/user.php?u=${tsaUsername}`);
+        const data = await res.json();
+        // data example:
+        // { "points": 12345, "lastGame": "Slay the Spire", "lastPoints": 10 }
+        return {
+            points: data.points || 0,
+            lastGame: data.lastGame || "N/A",
+            lastPoints: data.lastPoints || 0
+        };
+    } catch(err) {
+        console.error("TSA error:", err);
+        return null;
+    }
 }
 
-// ---- Combine and display ----
+// === Update the stats line ===
 async function updateGamingStats() {
-  const el = document.getElementById("gamingStats");
+    const el = document.getElementById("gamingStats");
 
-  const [steam, retro] = await Promise.all([fetchSteamStats(), fetchRetroStats()]);
+    const [retro, tsa] = await Promise.all([fetchRetroPoints(), fetchTsaStats()]);
 
-  let steamText = steam
-    ? `Steam Last Played: <strong>${steam.lastGame}</strong> (${steam.hours2w}h last 2 weeks)`
-    : `<a href="${steamProfileURL}" target="_blank">Steam: EvaPilot1</a>`;
+    const retroText = retro !== null
+        ? `<a href="${retroProfileURL}" target="_blank">RA: ${retro.toLocaleString()} points</a>`
+        : `<a href="${retroProfileURL}" target="_blank">RA stats unavailable</a>`;
 
-  let retroText = retro !== null
-    ? `<a href="${retroProfileURL}" target="_blank">RA: ${retro.toLocaleString()} points</a>`
-    : `<a href="${retroProfileURL}" target="_blank">RA stats unavailable</a>`;
+    const tsaText = tsa !== null
+        ? `<a href="https://truesteamachievements.com/user/${tsaUsername}" target="_blank">TSA: ${tsa.points.toLocaleString()} points (last: ${tsa.lastGame})</a>`
+        : `<a href="https://truesteamachievements.com/user/${tsaUsername}" target="_blank">TSA stats unavailable</a>`;
 
-  el.innerHTML = `${steamText} | ${retroText}`;
+    const steamText = `<a href="${steamProfileURL}" target="_blank">Steam profile</a>`;
+
+    el.innerHTML = `${steamText} | ${retroText} | ${tsaText}`;
 }
 
-// Run it
+// Run on load
 updateGamingStats();
 </script>
     
