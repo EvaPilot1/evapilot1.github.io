@@ -123,6 +123,67 @@
     </div>
 </div>
 
+    <div class="card" id="gameStatsCard">
+    <h2>Gaming Stats</h2>
+    <p id="gameStatsLine">Loading...</p>
+</div>
+
+    
+<script>
+// ==== CONFIG ====
+const steamUsername = "evapilot1"; // Your Steam custom URL
+const steamAPIKey = "YOUR_STEAM_API_KEY"; // Required for Steam stats
+const retroUsername = "evapilot1"; // Your RetroAchievements username
+
+async function fetchGamingStats() {
+    const el = document.getElementById("gameStatsLine");
+
+    let steamAch = "Steam: N/A";
+    let retroAch = "RetroAchievements: N/A";
+    let lastGame = "Last Played: N/A";
+
+    // ---- Fetch Steam stats ----
+    try {
+        // Resolve SteamID
+        const resId = await fetch(`https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key=${steamAPIKey}&vanityurl=${steamUsername}`);
+        const dataId = await resId.json();
+        const steamId = dataId.response.steamid;
+
+        // Get owned games
+        const resGames = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${steamAPIKey}&steamid=${steamId}&include_appinfo=true&include_played_free_games=true`);
+        const dataGames = await resGames.json();
+
+        let totalSteamAch = 0;
+        if (dataGames.response.games) {
+            for (const game of dataGames.response.games) {
+                if (game.achievements) totalSteamAch += game.achievements.length;
+            }
+
+            lastGame = "Last Played: " + (dataGames.response.games[0]?.name || "N/A");
+        }
+        steamAch = `Steam: ${totalSteamAch.toLocaleString()} achievements`;
+    } catch (err) {
+        console.error("Steam error:", err);
+    }
+
+    // ---- Fetch RetroAchievements stats ----
+    try {
+        const res = await fetch(`https://retroachievements.org/API/API_GetUserSummary.php?u=${retroUsername}&format=json`);
+        const data = await res.json();
+        retroAch = `RetroAchievements: ${data.TotalAchievements.toLocaleString()} achievements`;
+    } catch (err) {
+        console.error("RetroAchievements error:", err);
+    }
+
+    // ---- Display all on one line ----
+    el.textContent = `${steamAch} | ${retroAch} | ${lastGame}`;
+}
+
+// ---- Initialize ----
+fetchGamingStats();
+</script>
+
+    
 <!-- Cards -->
 <div class="grid">
 
