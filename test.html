@@ -125,10 +125,7 @@
 
     
 <center>
-  <!-- Steam -->
-  <a href="https://steamcommunity.com/id/EvaPilot1/" target="_blank">
-    Steam
-  </a>: <span id="steamScore">View profile</span> |
+
 
   <!-- RetroAchievements -->
   <a href="https://retroachievements.org/user/EvaPilot1" target="_blank">
@@ -136,7 +133,7 @@
   </a>: <span id="retroScore">Loading...</span> |
 
   <!-- Last Played -->
-  <span>Last Played: <span id="lastGame">View Steam</span></span>
+  <span>Last Played: <span id="lastGame">Loading...</span></span>
 </center>
 
 <script>
@@ -164,6 +161,46 @@ async function fetchRetroStats() {
 }
 
 fetchRetroStats();
+</script>
+
+    
+    <script>
+// ==== CONFIG ====
+const steamAPIKey = "YOUR_STEAM_API_KEY";
+const steamVanity = "EvaPilot1";
+
+// ---- Get SteamID from vanity URL ----
+async function getSteamID() {
+  const res = await fetch(`https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key=${steamAPIKey}&vanityurl=${steamVanity}`);
+  const data = await res.json();
+  return data.response.steamid;
+}
+
+// ---- Get last played game ----
+async function getLastPlayed() {
+  const el = document.getElementById("lastGame");
+
+  try {
+    const steamID = await getSteamID();
+
+    const res = await fetch(`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${steamAPIKey}&steamid=${steamID}`);
+    const data = await res.json();
+
+    if (data.response.games && data.response.games.length > 0) {
+      const game = data.response.games[0];
+      el.textContent = game.name;
+    } else {
+      el.textContent = "No recent games";
+    }
+
+  } catch (err) {
+    console.error(err);
+    el.textContent = "Unavailable";
+  }
+}
+
+// Run it
+getLastPlayed();
 </script>
 
     
