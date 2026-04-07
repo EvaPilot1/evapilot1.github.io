@@ -200,9 +200,11 @@ async function updateGamingStats() {
         ? `<a href="${retroProfileURL}" target="_blank">RA: ${retroPoints.toLocaleString()} points</a>`
         : `<a href="${retroProfileURL}" target="_blank">RA stats unavailable</a>`;
 
-    const tsaText = tsaData
-        ? `<a href="${tsaData.profile_url}" target="_blank">TSA: ${tsaData.total_points.toLocaleString()} points</a>`
-        : `<a href="https://truesteamachievements.com/user/EvaPilot1" target="_blank">TSA profile</a>`;
+const tsaText = tsaData
+  ? `<a href="${tsaData.profile_url}" target="_blank">
+       TSA: ${tsaData.total_achievements.toLocaleString()} achievements (${tsaData.total_points.toLocaleString()} pts)
+     </a>`
+  : `<a href="https://truesteamachievements.com/user/EvaPilot1" target="_blank">TSA profile</a>`;
 
     el.innerHTML = `${steamText} | ${retroText} | ${tsaText}`;
 }
