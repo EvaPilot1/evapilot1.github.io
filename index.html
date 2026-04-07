@@ -63,11 +63,25 @@
         }
 
         /* Card grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
+.grid {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 🖥️ Large screens → max 6 columns */
+@media (min-width: 1600px) {
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
 
         .card {
             background: var(--card);
@@ -260,7 +274,7 @@ updateGamingStats();
 
 
     <!-- Anime -->
-    <hr><br><h2>🌸 Anime</h2>
+</div><div class="card"><h2>🌸 Anime</h2>
     <ul>
 <li><a href="https://www.crunchyroll.com" target="_blank">Crunchyroll</a> <span class="description">Streaming anime</span></li>
 <li><a href="https://www.funimation.com" target="_blank">Funimation</a> <span class="description">Dubbed anime & simulcasts</span></li>
@@ -275,7 +289,7 @@ updateGamingStats();
     </ul>
 
     <!-- Movies -->
-    <hr><br><h2>🎬 Movies</h2>
+</div><div class="card"><h2>🎬 Movies</h2>
     <ul>
 <li><a href="https://www.imdb.com" target="_blank">IMDb</a> <span class="description">Movie database & ratings</span></li>
 <li><a href="https://letterboxd.com" target="_blank">Letterboxd</a> <span class="description">Movie tracking & reviews</span></li>
@@ -290,7 +304,7 @@ updateGamingStats();
     </ul>
 
     <!-- Games -->
-    <hr><br><h2>🎮 Games</h2>
+</div><div class="card"><h2>🎮 Games</h2>
     <ul>
 <li><a href="https://store.steampowered.com" target="_blank">Steam</a> <span class="description">PC games & community</span></li>
 <li><a href="https://www.epicgames.com/store" target="_blank">Epic Games Store</a> <span class="description">Game store & free titles</span></li>
@@ -305,7 +319,7 @@ updateGamingStats();
     </ul>
 
     <!-- Music -->
-    <hr><br><h2>🎵 Music</h2>
+</div><div class="card"><h2>🎵 Music</h2>
     <ul>
 <li><a href="https://www.spotify.com" target="_blank">Spotify</a> <span class="description">Streaming music</span></li>
 <li><a href="https://soundcloud.com" target="_blank">SoundCloud</a> <span class="description">Independent artists</span></li>
@@ -339,7 +353,7 @@ function toggleRainwave() {
 
         
     <!-- Reading -->
-    <hr><br><h2>📚 Reading</h2>
+</div><div class="card"><h2>📚 Reading</h2>
     <ul>
 <li><a href="https://www.gutenberg.org" target="_blank">Project Gutenberg</a> <span class="description">Free eBooks</span></li>
 <li><a href="https://librivox.org" target="_blank">LibriVox</a> <span class="description">Free audiobooks</span></li>
@@ -354,7 +368,7 @@ function toggleRainwave() {
     </ul>
 
     <!-- Social Media -->
-    <hr><br><h2>💬 Social Media</h2>
+</div><div class="card"><h2>💬 Social Media</h2>
     <ul>
 <li><a href="https://www.facebook.com" target="_blank">Facebook</a> <span class="description">Networking & communities</span></li>
 <li><a href="https://twitter.com" target="_blank">Twitter / X</a> <span class="description">Microblogging & news</span></li>
@@ -369,7 +383,7 @@ function toggleRainwave() {
     </ul>
 
     <!-- Publishing -->
-    <hr><br><h2>✍️ Publishing</h2>
+</div><div class="card"><h2>✍️ Publishing</h2>
     <ul>
 <li><a href="https://medium.com" target="_blank">Medium</a> <span class="description">Blogging & articles</span></li>
 <li><a href="https://substack.com" target="_blank">Substack</a> <span class="description">Newsletters & writing</span></li>
@@ -384,7 +398,7 @@ function toggleRainwave() {
     </ul>
 
     <!-- Shopping -->
-    <hr><br><h2>🛒 Shopping</h2>
+</div><div class="card"><h2>🛒 Shopping</h2>
     <ul>
 <li><a href="https://www.amazon.com" target="_blank">Amazon</a> <span class="description">General e-commerce</span></li>
 <li><a href="https://www.ebay.com" target="_blank">eBay</a> <span class="description">Auctions & marketplace</span></li>
@@ -399,7 +413,7 @@ function toggleRainwave() {
     </ul>
 
     <!-- Tools -->
-    <hr><br><h2>🛠 Tools</h2>
+</div><div class="card"><h2>🛠 Tools</h2>
     <ul>
 <!-- Tools -->
 <li><a href="https://www.notion.so" target="_blank">Notion</a> <span class="description">Notes & organization</span></li>
@@ -415,7 +429,7 @@ function toggleRainwave() {
     </ul>
 
     <!-- Important / Finance -->
-    <hr><br><h2>⭐ Important</h2>
+</div><div class="card"><h2>⭐ Important</h2>
     <ul>
 <li><a href="https://www.google.com" target="_blank">Google</a> <span class="description">Search engine</span></li>
 <li><a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> <span class="description">Reference & knowledge</span></li>
@@ -431,7 +445,7 @@ function toggleRainwave() {
 </div>
 </div>
     
-<br><center>
+<center>
 <a href="#" target="blank" style="font-size: 10px;">[Emojis]</a>
 <a href="#" target="blank" style="font-size: 10px;">[Stickers]</a>
 <a href="#" target="blank" style="font-size: 10px;">[Avatars]</a>
