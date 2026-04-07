@@ -133,8 +133,8 @@
 const steamProfileURL = "https://steamcommunity.com/id/EvaPilot1/";
 const retroProfileURL = "https://retroachievements.org/user/EvaPilot1";
 const retroUser = "EvaPilot1";
-const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ"; // your RetroAchievements API key
-const tsaUsername = "EvaPilot1";     // your TrueSteamAchievements username
+const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ"; // replace with your RetroAchievements API key
+const tsaProfileURL = "https://truesteamachievements.com/user/EvaPilot1";
 
 // === Fetch RetroAchievements points ===
 async function fetchRetroPoints() {
@@ -150,44 +150,47 @@ async function fetchRetroPoints() {
     }
 }
 
-// === Fetch TSA points & last unlocked achievement ===
-async function fetchTsaStats() {
+// === Fetch Steam last played game from XML ===
+async function fetchLastPlayedGame() {
     try {
-        const res = await fetch(`https://www.truesteamachievements.com/api/user.php?u=${tsaUsername}`);
-        const data = await res.json();
-        // data example:
-        // { "points": 12345, "lastGame": "Slay the Spire", "lastPoints": 10 }
-        return {
-            points: data.points || 0,
-            lastGame: data.lastGame || "N/A",
-            lastPoints: data.lastPoints || 0
-        };
+        const res = await fetch(`${steamProfileURL}?xml=1`);
+        const text = await res.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(text, "application/xml");
+
+        const gameNode = xmlDoc.querySelector("mostrecentgame > name");
+        const hoursNode = xmlDoc.querySelector("mostrecentgame > hoursLast2Weeks");
+
+        const lastGame = gameNode ? gameNode.textContent : null;
+        const hours = hoursNode ? hoursNode.textContent : "0";
+
+        return lastGame ? { lastGame, hours } : null;
     } catch(err) {
-        console.error("TSA error:", err);
+        console.error("Steam XML error:", err);
         return null;
     }
 }
 
-// === Update the stats line ===
+// === Update stats line ===
 async function updateGamingStats() {
     const el = document.getElementById("gamingStats");
 
-    const [retro, tsa] = await Promise.all([fetchRetroPoints(), fetchTsaStats()]);
+    const [retro, steam] = await Promise.all([fetchRetroPoints(), fetchLastPlayedGame()]);
+
+    const steamText = steam
+        ? `<a href="${steamProfileURL}" target="_blank">Steam: ${steam.lastGame} (${steam.hours}h last 2w)</a>`
+        : `<a href="${steamProfileURL}" target="_blank">Steam profile</a>`;
 
     const retroText = retro !== null
         ? `<a href="${retroProfileURL}" target="_blank">RA: ${retro.toLocaleString()} points</a>`
         : `<a href="${retroProfileURL}" target="_blank">RA stats unavailable</a>`;
 
-    const tsaText = tsa !== null
-        ? `<a href="https://truesteamachievements.com/user/${tsaUsername}" target="_blank">TSA: ${tsa.points.toLocaleString()} points (last: ${tsa.lastGame})</a>`
-        : `<a href="https://truesteamachievements.com/user/${tsaUsername}" target="_blank">TSA stats unavailable</a>`;
-
-    const steamText = `<a href="${steamProfileURL}" target="_blank">Steam profile</a>`;
+    const tsaText = `<a href="${tsaProfileURL}" target="_blank">TSA profile</a>`;
 
     el.innerHTML = `${steamText} | ${retroText} | ${tsaText}`;
 }
 
-// Run on load
+// Run on page load
 updateGamingStats();
 </script>
     
