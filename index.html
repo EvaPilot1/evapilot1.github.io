@@ -316,7 +316,7 @@ updateGamingStats();
 <li><a href="https://tidal.com" target="_blank">Tidal</a> <span class="description">High-fidelity music</span></li>
 <li><a href="https://www.last.fm" target="_blank">Last.fm</a> <span class="description">Music tracking & discovery</span></li>
 <li><a href="https://www.shazam.com" target="_blank">Shazam</a> <span class="description">Identify songs</span></li>
-<li><a href="#" onclick="toggleRainwave(); return false;">🎵 Rainwave</a><span class="description">Play / Pause game music radio</span></li>
+<li><a href="#" id="rainwaveLink" onclick="toggleRainwave(); return false;">▶ Rainwave</a><span class="description">Play / Pause game music radio</span></li>
 
         
 <audio id="rainwavePlayer" src="https://relay.rainwave.cc/game.ogg"></audio>
@@ -324,11 +324,14 @@ updateGamingStats();
 <script>
 function toggleRainwave() {
   const audio = document.getElementById("rainwavePlayer");
+  const link = document.getElementById("rainwaveLink");
 
   if (audio.paused) {
     audio.play();
+    link.textContent = "⏸ Rainwave";
   } else {
     audio.pause();
+    link.textContent = "▶ Rainwave";
   }
 }
 </script>
