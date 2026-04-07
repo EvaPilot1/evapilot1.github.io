@@ -26,7 +26,7 @@ except:
     last_game = "Unavailable"
 
 steam_data = {
-    "steam_profile": f"https://steamcommunity.com/id/{steam_profile_id}",
+    "steam_profile": f"https://steamcommunity.com/id/EvaPilot1",
     "last_played": last_game,
     "updated": datetime.utcnow().isoformat()
 }
@@ -43,14 +43,14 @@ try:
     res = requests.get(tsa_api_url)
     data = res.json()
     tsa_data = {
-        "profile_url": f"https://truesteamachievements.com/user/{tsa_user}",
+        "profile_url": f"https://truesteamachievements.com/user/EvaPilot1",
         "total_achievements": data.get("totalAchievements", 0),
         "total_points": data.get("totalPoints", 0),
         "updated": datetime.utcnow().isoformat()
     }
 except:
     tsa_data = {
-        "profile_url": f"https://truesteamachievements.com/user/{tsa_user}",
+        "profile_url": f"https://truesteamachievements.com/user/EvaPilot1",
         "total_achievements": 0,
         "total_points": 0,
         "updated": datetime.utcnow().isoformat()
