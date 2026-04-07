@@ -232,26 +232,76 @@ if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark");
 }
 
+let manualOverride = false;
+
+function toggleTwitch() {
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    manualOverride = true;
+
+    if (section.style.display === "none") {
+        section.style.display = "flex";
+        button.textContent = "Hide Twitch";
+        localStorage.setItem("twitchHidden", "false");
+    } else {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+        localStorage.setItem("twitchHidden", "true");
+    }
+}
+
 async function checkLiveStatus() {
     const el = document.getElementById("status");
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
     try {
         const res = await fetch("https://decapi.me/twitch/uptime/EvaPilot1");
         const text = await res.text();
 
-        if (text.includes("offline")) {
-            el.textContent = "● Offline";
-            el.className = "status offline";
-        } else {
+        const isLive = !text.includes("offline");
+
+        if (isLive) {
             el.textContent = "● LIVE";
             el.className = "status live";
+
+            // Show if live (unless manually hidden)
+            if (!manualOverride && localStorage.getItem("twitchHidden") !== "true") {
+                section.style.display = "flex";
+                button.textContent = "Hide Twitch";
+            }
+
+        } else {
+            el.textContent = "● Offline";
+            el.className = "status offline";
+
+            // Auto-hide if offline (unless manually shown)
+            if (!manualOverride) {
+                section.style.display = "none";
+                button.textContent = "Show Twitch";
+            }
         }
+
     } catch {
         el.textContent = "Status unavailable";
     }
 }
 
-checkLiveStatus();
-setInterval(checkLiveStatus, 60000);
+// Load preferences
+window.addEventListener("DOMContentLoaded", () => {
+    const hidden = localStorage.getItem("twitchHidden") === "true";
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    if (hidden) {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+    }
+
+    checkLiveStatus();
+    setInterval(checkLiveStatus, 60000);
+});
 </script>
 
 </body>
