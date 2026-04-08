@@ -379,34 +379,16 @@ updateGamingStats();
     <!-- Music -->
 </div><div class="card"><h2>🎵 Music</h2>
     <ul>
-<li><a href="https://www.spotify.com" target="_blank">Spotify</a> <span class="description">Streaming music</span></li>
-<li><a href="https://soundcloud.com" target="_blank">SoundCloud</a> <span class="description">Independent artists</span></li>
-<li><a href="https://music.youtube.com" target="_blank">YouTube Music</a> <span class="description">Music videos & playlists</span></li>
-<li><a href="https://bandcamp.com" target="_blank">Bandcamp</a> <span class="description">Support indie artists</span></li>
-<li><a href="https://www.apple.com/apple-music/" target="_blank">Apple Music</a> <span class="description">Streaming service</span></li>
-<li><a href="https://www.pandora.com" target="_blank">Pandora</a> <span class="description">Personalized radio</span></li>
-<li><a href="https://tidal.com" target="_blank">Tidal</a> <span class="description">High-fidelity music</span></li>
-<li><a href="https://www.last.fm" target="_blank">Last.fm</a> <span class="description">Music tracking & discovery</span></li>
-<li><a href="https://www.shazam.com" target="_blank">Shazam</a> <span class="description">Identify songs</span></li>
-<li><a href="#" id="rainwaveLink" onclick="toggleRainwave(); return false;">▶ Rainwave</a><span class="description">Play / Pause game music radio</span></li>
-
-        
-<audio id="rainwavePlayer" src="https://relay.rainwave.cc/game.ogg"></audio>
-
-<script>
-function toggleRainwave() {
-  const audio = document.getElementById("rainwavePlayer");
-  const link = document.getElementById("rainwaveLink");
-
-  if (audio.paused) {
-    audio.play();
-    link.textContent = "⏸ Rainwave";
-  } else {
-    audio.pause();
-    link.textContent = "▶ Rainwave";
-  }
-}
-</script>
+<li><a href="https://gendou.com" target="_blank">Gendou</a> <span class="description">Video game music downloads</span></li>
+<li><a href="https://downloads.khinsider.com" target="_blank">KHInsider</a> <span class="description">Kingdom Hearts music archive</span></li>
+<li><a href="https://rainwave.cc" target="_blank">Rainwave</a> <span class="description">Interactive game music radio</span></li>
+<li><a href="https://www.spotify.com" target="_blank">Spotify</a> <span class="description">Music and podcast streaming</span></li>
+<li><a href="https://genius.com" target="_blank">Genius</a> <span class="description">Lyrics and song meanings</span></li>
+<li><a href="https://musicbrainz.org" target="_blank">MusicBrainz</a> <span class="description">Community music database</span></li>
+<li><a href="https://www.shazam.com" target="_blank">Shazam</a> <span class="description">Identify songs instantly</span></li>
+<li><a href="https://www.plex.tv/plexamp" target="_blank">Plexamp</a> <span class="description">Stream personal music library</span></li>
+<li><a href="https://ukradiolive.com" target="_blank">UKRadioLive</a> <span class="description">Listen to UK radio stations</span></li>
+<li><a href="https://en.anison.fm" target="_blank">Anison.fm</a> <span class="description">Anime song streaming radio</span></li>
     </ul>
 
         
@@ -501,7 +483,7 @@ function toggleRainwave() {
 <li><a href="https://www.coursera.org" target="_blank">Coursera</a> <span class="description">Online learning</span></li>
     </ul>
     
-    <!-- Important / Finance -->
+    <!-- Odd -->
 </div><div class="card"><h2>⭐ Other</h2>
     <ul>
 <li><a href="https://www.google.com" target="_blank">Google</a> <span class="description">Search engine</span></li>
@@ -513,7 +495,25 @@ function toggleRainwave() {
 <li><a href="https://www.cia.gov/the-world-factbook/" target="_blank">CIA World Factbook</a> <span class="description">Country info</span></li>
 <li><a href="https://www.who.int" target="_blank">World Health Organization</a> <span class="description">Global health</span></li>
 <li><a href="https://www.un.org" target="_blank">UN</a> <span class="description">International organization resources</span></li>
-<li><a href="https://www.coursera.org" target="_blank">Coursera</a> <span class="description">Online learning</span></li>
+<li><a href="#" id="rainwaveLink" onclick="toggleRainwave(); return false;">▶ Rainwave</a><span class="description">Play / Pause game music radio</span></li>
+
+        
+<audio id="rainwavePlayer" src="https://relay.rainwave.cc/game.ogg"></audio>
+
+<script>
+function toggleRainwave() {
+  const audio = document.getElementById("rainwavePlayer");
+  const link = document.getElementById("rainwaveLink");
+
+  if (audio.paused) {
+    audio.play();
+    link.textContent = "⏸ Rainwave";
+  } else {
+    audio.pause();
+    link.textContent = "▶ Rainwave";
+  }
+}
+</script>
     </ul>
 </div>
 </div>
