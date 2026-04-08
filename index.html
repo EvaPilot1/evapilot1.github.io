@@ -15,6 +15,8 @@
             --bg: #ffffff;
             --text: #000;
             --card: #f4f4f4;
+            --title-bg: rgba(0, 0, 0, 0.7); /* dark overlay for light mode */
+            --title-color: white;
         }
 
         body.dark {
@@ -22,6 +24,8 @@
             --bg: #121212;
             --text: #fff;
             --card: #1e1e1e;
+            --title-bg: rgba(255, 255, 255, 0.3); /* light overlay for dark mode */
+            --title-color: black;
         }
 
 body {
@@ -35,6 +39,13 @@ body {
 
         h1 {
             text-align: center;
+            background-color: var(--title-bg);
+            color: var(--title-color);
+            padding: 8px 16px;
+            border-radius: 6px;
+            display: inline-block;  /* background wraps the text */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* optional for extra readability */
+            transition: background-color 0.3s, color 0.3s; /* smooth theme switch */
         }
 
         /* Controls */
