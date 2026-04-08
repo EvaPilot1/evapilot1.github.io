@@ -15,6 +15,8 @@
             --bg: #ffffff;
             --text: #000;
             --card: #f4f4f4;
+	--highlight-bg: rgba(255, 255, 255, 0.7); /* light highlight in light mode */
+    	--highlight-color: #000; /* text color for light mode */
         }
 
         body.dark {
@@ -22,6 +24,8 @@
             --bg: #121212;
             --text: #fff;
             --card: #1e1e1e;
+    	--highlight-bg: rgba(0, 0, 0, 0.7); /* dark highlight in dark mode */
+    	--highlight-color: #fff; /* text color for dark mode */
         }
 
 body {
@@ -163,6 +167,13 @@ body.dark .card:hover {
 body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
 .card:hover .description {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
 
+.highlight {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: background-color 0.3s, color 0.3s; /* smooth dark mode transition */
+}
+
     </style>
 </head>
 <body>
@@ -173,7 +184,7 @@ body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
     <div id="status" class="status">Checking status...</div>
 </div>
 
-<h1>EvaPilot1 - Directory</h1>
+<span class="highlight"><h1>EvaPilot1 - Directory</h1></span>
 
 <!-- Twitch -->
 <div id="twitchSection" class="twitch-wrapper">
@@ -187,7 +198,7 @@ body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
 
     
 <center>
-  <span id="gamingStats">Loading gaming stats...</span>
+  <span class="highlight" id="gamingStats">Loading gaming stats...</span>
 </center><br>
 
 <style>
