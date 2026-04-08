@@ -18,18 +18,20 @@
         }
 
         body.dark {
+                background: url('assets/images/wallpaper-dark.jpg') no-repeat center center fixed; background-size: cover;
             --bg: #121212;
             --text: #fff;
             --card: #1e1e1e;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            margin: 20px;
-            transition: 0.3s;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: url('assets/images/wallpaper.jpg') no-repeat center center fixed;
+    background-size: cover; /* Makes it cover the entire page */
+    color: var(--text);
+    margin: 20px;
+    transition: 0.3s;
+}
 
         h1 {
             text-align: center;
