@@ -490,42 +490,58 @@ updateGamingStats();
 </div><div class="card"><h2>⭐ Other</h2>
     <ul>
 <li>
+  <a href="#" id="rainwaveLink" onclick="toggleRainwave(); return false;">▶ Rainwave</a>
+  <span class="description">Play / Pause game music radio</span>
+</li>
+
+<li>
   <a href="#" id="anisonLink" onclick="toggleAnison(); return false;">▶ Anison.fm</a>
   <span class="description">Play / Pause anime music radio</span>
 </li>
 
-<audio id="anisonPlayer" src="https://stream.anison.fm/anison.ogg"></audio> <!-- replace with correct stream URL -->
-
-<script>
-function toggleAnison() {
-  const audio = document.getElementById("anisonPlayer");
-  const link = document.getElementById("anisonLink");
-
-  if (audio.paused) {
-    audio.play();
-    link.textContent = "⏸ Anison.fm";
-  } else {
-    audio.pause();
-    link.textContent = "▶ Anison.fm";
-  }
-}
-</script>
-<li><a href="#" id="rainwaveLink" onclick="toggleRainwave(); return false;">▶ Rainwave</a><span class="description">Play / Pause game music radio</span></li>
-
-        
 <audio id="rainwavePlayer" src="https://relay.rainwave.cc/game.ogg"></audio>
+<audio id="anisonPlayer" src="https://pool.anison.fm/AniSonFM(320)"></audio>
 
 <script>
 function toggleRainwave() {
-  const audio = document.getElementById("rainwavePlayer");
-  const link = document.getElementById("rainwaveLink");
+  const rainwave = document.getElementById("rainwavePlayer");
+  const rainwaveLink = document.getElementById("rainwaveLink");
+  const anison = document.getElementById("anisonPlayer");
+  const anisonLink = document.getElementById("anisonLink");
 
-  if (audio.paused) {
-    audio.play();
-    link.textContent = "⏸ Rainwave";
+  // Pause Anison if it’s playing
+  if (!anison.paused) {
+    anison.pause();
+    anisonLink.textContent = "▶ Anison.fm";
+  }
+
+  if (rainwave.paused) {
+    rainwave.play();
+    rainwaveLink.textContent = "⏸ Rainwave";
   } else {
-    audio.pause();
-    link.textContent = "▶ Rainwave";
+    rainwave.pause();
+    rainwaveLink.textContent = "▶ Rainwave";
+  }
+}
+
+function toggleAnison() {
+  const anison = document.getElementById("anisonPlayer");
+  const anisonLink = document.getElementById("anisonLink");
+  const rainwave = document.getElementById("rainwavePlayer");
+  const rainwaveLink = document.getElementById("rainwaveLink");
+
+  // Pause Rainwave if it’s playing
+  if (!rainwave.paused) {
+    rainwave.pause();
+    rainwaveLink.textContent = "▶ Rainwave";
+  }
+
+  if (anison.paused) {
+    anison.play();
+    anisonLink.textContent = "⏸ Anison.fm";
+  } else {
+    anison.pause();
+    anisonLink.textContent = "▶ Anison.fm";
   }
 }
 </script>
