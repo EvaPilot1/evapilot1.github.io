@@ -19,23 +19,32 @@
     	--highlight-color: #000; /* text color for light mode */
         }
 
-        body.dark {
-                background: url('assets/images/wallpaper-dark.jpg') no-repeat center center fixed; background-size: cover;
-            --bg: #121212;
-            --text: #fff;
-            --card: #1e1e1e;
-    	--highlight-bg: rgba(0, 0, 0, 0.7); /* dark highlight in dark mode */
-    	--highlight-color: #fff; /* text color for dark mode */
-        }
-
 body {
     font-family: Arial, sans-serif;
-	background-color: var(--bg); /* fallback */
-    background: url('assets/images/wallpaper.jpg') no-repeat center center fixed;
+    background-color: var(--bg); /* fallback if image fails */
+    background-image: url('assets/images/wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     background-size: cover; /* Makes it cover the entire page */
     color: var(--text);
     margin: 20px;
     transition: 0.3s;
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #fff;
+    --card: #1e1e1e;
+    --highlight-bg: rgba(0, 0, 0, 0.7);
+    --highlight-color: #fff;
+
+    background-color: var(--bg); /* fallback if dark wallpaper fails */
+    background-image: url('assets/images/wallpaper-dark.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
         h1 {
