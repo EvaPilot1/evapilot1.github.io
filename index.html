@@ -31,12 +31,10 @@ body {
     color: var(--text);
     margin: 20px;
     transition: 0.3s;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
         h1 {
             text-align: center;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         /* Controls */
@@ -82,7 +80,6 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
     justify-content: center; /* center grid on wider screens */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 /* Frosted glass cards */
@@ -94,7 +91,6 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 /* Hover effect for cards */
@@ -102,19 +98,16 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     background: rgba(255, 255, 255, 0.45); /* slightly more opaque on hover */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 /* Dark mode support */
 body.dark .card {
     background: rgba(30, 30, 30, 0.5);
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 body.dark .card:hover {
     background: rgba(30, 30, 30, 0.65);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 /* 📱 Mobile */
@@ -136,44 +129,39 @@ body.dark .card:hover {
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         .card h2 {
             margin-top: 0;
             font-size: 18px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         .card ul {
             list-style: none;
             padding: 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         .card li {
             margin: 8px 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         a {
             color: #6d28d9;
             text-decoration: none;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         a:hover {
             color: #ec4899;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         .description {
             margin-left: 6px;
             font-size: 0.9em;
             color: #aaa;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
+body.dark .description {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
+
 
     </style>
 </head>
