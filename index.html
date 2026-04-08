@@ -178,6 +178,36 @@ body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
     transition: background-color 0.3s, color 0.3s; /* smooth dark mode transition */
 }
 
+<style>
+.magic-title {
+  display: inline-block;
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px #fff, 0 0 12px #ffccff, 0 0 18px #ff66ff;
+}
+
+/* Wrap each letter in a span for animation */
+.magic-title span {
+  display: inline-block;
+  animation: floatMagic 3s infinite ease-in-out;
+}
+
+/* Stagger letters */
+.magic-title span:nth-child(1) { animation-delay: 0s; }
+.magic-title span:nth-child(2) { animation-delay: 0.1s; }
+.magic-title span:nth-child(3) { animation-delay: 0.2s; }
+.magic-title span:nth-child(4) { animation-delay: 0.3s; }
+.magic-title span:nth-child(5) { animation-delay: 0.4s; }
+.magic-title span:nth-child(6) { animation-delay: 0.5s; }
+.magic-title span:nth-child(7) { animation-delay: 0.6s; }
+
+/* Gentle floating + slight rotation */
+@keyframes floatMagic {
+  0% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
+  50% { transform: translateY(-6px) rotate(5deg); color: #ffffff; }
+  100% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
+}
+
+		
     </style>
 </head>
 <body>
@@ -487,8 +517,13 @@ updateGamingStats();
     </ul>
     
     <!-- Odd -->
-</div><div class="card"><h2>⭐ Other</h2>
-    <ul>
+</div><div class="card"><h2 class="magic-title">⭐ Freaky</h2>
+<script>
+// Split letters into spans
+const title = document.querySelector('.magic-title');
+title.innerHTML = title.textContent.split('').map(char => `<span>${char}</span>`).join('');
+</script>
+	<ul>
 <li>
   <a href="#" id="rainwaveLink" onclick="toggleRainwave(); return false;">▶ Rainwave</a>
   <span class="description">Play / Pause game music radio</span>
