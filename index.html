@@ -207,6 +207,10 @@ body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
   100% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
 }
 
+		  #hidden-links {
+    display: none; /* Hidden by default */
+    margin-top: 10px;
+  }
 		
     </style>
 </head>
@@ -581,6 +585,27 @@ function toggleAnison() {
 }
 </script>
     </ul>
+<button onclick="unhideLinks()">Unhide Links</button>
+<div id="hidden-links">
+  <ul>
+    <li><a href="https://fapinstructor.com/home" target="_blank">Instructor</a></li>
+    <li><a href="https://mopoga.com/degrees-of-lewdity" target="_blank">DoL</a></li>
+    <li><a href="https://chan.sankakucomplex.com/" target="_blank">Sankaku Complex</a></li>
+    <li><a href="https://idol.sankakucomplex.com/" target="_blank">Idol Complex</a></li>
+  </ul>
+</div>
+
+<script>
+  function unhideLinks() {
+    const hiddenDiv = document.getElementById('hidden-links');
+    if (hiddenDiv.style.display === 'none') {
+      hiddenDiv.style.display = 'block';
+    } else {
+      hiddenDiv.style.display = 'none'; // Optional: allow toggle
+    }
+  }
+</script>
+	
 </div>
 </div>
     
