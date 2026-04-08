@@ -207,9 +207,12 @@ body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
   100% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
 }
 
-		  #hidden-links {
-    display: none; /* Hidden by default */
+  #hidden-links {
+    display: none;
     margin-top: 10px;
+  }
+  a.toggle {
+    cursor: pointer;
   }
 		
     </style>
@@ -596,12 +599,16 @@ function toggleAnison() {
 </div>
 
 <script>
-  function unhideLinks() {
+  function toggleLinks() {
     const hiddenDiv = document.getElementById('hidden-links');
+    const toggleLink = document.querySelector('.toggle');
+
     if (hiddenDiv.style.display === 'none') {
       hiddenDiv.style.display = 'block';
+      toggleLink.textContent = "Hide Links";
     } else {
-      hiddenDiv.style.display = 'none'; // Optional: allow toggle
+      hiddenDiv.style.display = 'none';
+      toggleLink.textContent = "Unhide Links";
     }
   }
 </script>
@@ -617,12 +624,9 @@ function toggleAnison() {
 <a href="#" target="blank" style="font-size: 10px;">[Banners]</a>
 <a href="#" target="blank" style="font-size: 10px;">[Wallpapers]</a>
 <a href="#" target="blank" style="font-size: 10px;">[Gifs]</a>
+<a class="toggle" onclick="toggleLinks()" style="font-size: 10px;>[?]</a>
 	</span>
 </center> 
-
-	
-<button onclick="unhideLinks()">?</button>
-
 	
 <script>
 function toggleTwitch() {
