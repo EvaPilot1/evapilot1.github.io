@@ -392,6 +392,15 @@ title.innerHTML = title.textContent.split('').map(char => `<span>${char}</span>`
 	I have repurposed some emojis for use with discord, and made some of my own from sprite sheets online for fun.</p>
 		
 <p><a href="https://ko-fi.com/evapilot1" target="_blank" class="magical-link">EvaPilot1</a> <span class="description"></span></p>
+<p id="cardCount"></p>
+
+<script>
+  const card = document.getElementById("emojis");
+  const imageCount = card.querySelectorAll("img").length;
+
+  document.getElementById("cardCount").textContent =
+    "Images in card: " + imageCount;
+</script>
 
 <script>
 const link = document.querySelector('.magical-link');
@@ -401,7 +410,7 @@ link.innerHTML = link.textContent.split('').map(char => `<span>${char}</span>`).
 		
     </div>
 
-    <div class="card">
+    <div class="card" id="emojis">
 <center>
 
 <img src="assets/emojis/anime/Type.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
@@ -860,7 +869,12 @@ link.innerHTML = link.textContent.split('').map(char => `<span>${char}</span>`).
 
 
 
+<script>
+  const card = document.getElementById("emojis");
+  const imageCount = card.querySelectorAll("img").length;
 
+  console.log("Images in card:", imageCount);
+</script>
 
 <center>
 	<span class="highlight">
