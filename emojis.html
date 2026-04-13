@@ -394,13 +394,7 @@ title.innerHTML = title.textContent.split('').map(char => `<span>${char}</span>`
 <p><a href="https://ko-fi.com/evapilot1" target="_blank" class="magical-link">EvaPilot1</a> <span class="description"></span></p>
 <p id="cardCount"></p>
 
-<script>
-  const card = document.getElementById("emojis");
-  const imageCount = card.querySelectorAll("img").length;
-
-  document.getElementById("cardCount").textContent =
-    "Images in card: " + imageCount;
-</script>
+		<p class="cardCount"></p>
 
 <script>
 const link = document.querySelector('.magical-link');
@@ -870,10 +864,24 @@ link.innerHTML = link.textContent.split('').map(char => `<span>${char}</span>`).
 
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
   const card = document.getElementById("emojis");
-  const imageCount = card.querySelectorAll("img").length;
+  const images = card.querySelectorAll("img");
 
-  console.log("Images in card:", imageCount);
+  let png = 0;
+  let gif = 0;
+
+  images.forEach(img => {
+    const src = img.src.toLowerCase().split("?")[0];
+    if (src.endsWith(".png")) png++;
+    if (src.endsWith(".gif")) gif++;
+  });
+
+  const total = images.length;
+
+  const output = card.querySelector(".cardCount");
+  output.textContent = `Images: ${total} (PNG: ${png}, GIF: ${gif})`;
+});
 </script>
 
 <center>
