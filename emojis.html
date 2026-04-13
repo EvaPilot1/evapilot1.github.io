@@ -382,7 +382,12 @@ updateGamingStats();
 <div class="grid">
 
     <div class="card">
-    <h2>Discord Emojis</h2>
+    <h2 class="magic-title">⭐ Discord Emojis</h2>
+<script>
+// Split letters into spans
+const title = document.querySelector('.magic-title');
+title.innerHTML = title.textContent.split('').map(char => `<span>${char}</span>`).join('');
+</script>
 	Discord emojis should be 128x128 with a maximum size of 256kb.
 	I have repurposed some emojis for use with discord, and made some of my own from sprite sheets online for fun.
     </div>
