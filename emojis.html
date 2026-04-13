@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvaPilot1 - Directory</title>
+    <!-- Standard favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000;
+            --card: #f4f4f4;
+	--highlight-bg: rgba(255, 255, 255, 0.7); /* light highlight in light mode */
+    	--highlight-color: #000; /* text color for light mode */
+        }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg); /* fallback if image fails */
+    background-image: url('assets/images/wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover; /* Makes it cover the entire page */
+    color: var(--text);
+    transition: 0.3s;
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #fff;
+    --card: #1e1e1e;
+    --highlight-bg: rgba(0, 0, 0, 0.7);
+    --highlight-color: #fff;
+
+    background-color: var(--bg); /* fallback if dark wallpaper fails */
+    background-image: url('assets/images/wallpaper-dark.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+        h1 {
+            text-align: center;
+			    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: background-color 0.3s, color 0.3s; /* smooth dark mode transition */
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0px;
+        }
+
+        .status.live { color: red; }
+        .status.offline { color: gray; }
+
+        /* Twitch */
+.twitch-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* center the content */
+    gap: 10px;
+    margin-bottom: 25px;
+    max-width: 1100px;       /* optional, limits total width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.twitch-video {
+    flex: 2 1 600px;         /* grows, shrinks, base width 600px */
+}
+
+.twitch-chat {
+    flex: 1 1 300px;         /* grows, shrinks, base width 300px */
+}
+
+        iframe {
+            width: 100%;
+            height: 393px;
+            border: none;
+        }
+
+        /* Card grid */
+/* Card grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(250px, 600px));
+    gap: 15px;
+    justify-content: center; /* center grid on wider screens */
+}
+
+/* Frosted glass cards */
+.card {
+    background: rgba(255, 255, 255, 0.3); /* light transparent */
+    backdrop-filter: blur(10px); /* blur behind the card */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    background: rgba(255, 255, 255, 0.45); /* slightly more opaque on hover */
+}
+
+/* Dark mode support */
+body.dark .card {
+    background: rgba(30, 30, 30, 0.5);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.dark .card:hover {
+    background: rgba(30, 30, 30, 0.65);
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 🖥️ Large screens → max 6 columns */
+@media (min-width: 1600px) {
+    .grid {
+        grid-template-columns: repeat(1, 600px);
+    }
+}
+
+        .card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            margin: 8px 0;
+        }
+
+        a {
+            color: #8e44ad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+		body.dark a {
+			-webkit-text-stroke: 0.3px black;
+        }
+
+        a:hover {
+            color: #ec4899;
+        }
+
+        .description {
+            margin-left: 6px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
+.card:hover .description {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
+
+.highlight {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: background-color 0.3s, color 0.3s; /* smooth dark mode transition */
+}
+
+<style>
+.magic-title {
+  display: inline-block;
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px #fff, 0 0 12px #ffccff, 0 0 18px #ff66ff;
+}
+
+/* Wrap each letter in a span for animation */
+.magic-title span {
+  display: inline-block;
+  animation: floatMagic 3s infinite ease-in-out;
+}
+
+/* Stagger letters */
+.magic-title span:nth-child(1) { animation-delay: 0s; }
+.magic-title span:nth-child(2) { animation-delay: 0.1s; }
+.magic-title span:nth-child(3) { animation-delay: 0.2s; }
+.magic-title span:nth-child(4) { animation-delay: 0.3s; }
+.magic-title span:nth-child(5) { animation-delay: 0.4s; }
+.magic-title span:nth-child(6) { animation-delay: 0.5s; }
+.magic-title span:nth-child(7) { animation-delay: 0.6s; }
+
+/* Gentle floating + slight rotation */
+@keyframes floatMagic {
+  0% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
+  50% { transform: translateY(-6px) rotate(5deg); color: #ffffff; }
+  100% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
+}
+
+/* Magical spiral letters for links */
+.magical-link {
+    display: inline-block;
+    color: #9b59b6; /* your purple */
+    font-weight: bold;
+    font-size: 1em;   /* match your description / normal link size */
+    letter-spacing: 1px; /* slightly tighter for smaller text */
+    position: relative;
+    text-decoration: none;
+}
+
+.magical-link span {
+    display: inline-block;
+    animation: swirlTwinkle 3s infinite;
+    transform-origin: center center;
+}
+
+/* Keyframes for spiraling + twinkling */
+@keyframes swirlTwinkle {
+    0%   { transform: rotate(0deg) translateY(0) scale(1); opacity: 1; }
+    25%  { transform: rotate(5deg) translateY(-2px) scale(1.05); opacity: 0.85; }
+    50%  { transform: rotate(0deg) translateY(0) scale(1); opacity: 1; }
+    75%  { transform: rotate(-5deg) translateY(2px) scale(0.95); opacity: 0.85; }
+    100% { transform: rotate(0deg) translateY(0) scale(1); opacity: 1; }
+}
+		
+
+  #hidden-links {
+    display: none;
+    margin-top: 10px;
+  }
+  a.toggle {
+    cursor: pointer;
+  }
+		
+    </style>
+</head>
+<body>
+	
+<div class="controls">
+    <button onclick="toggleDarkMode()" style="background-color: black; color: white;">🌙Toggle Dark Mode</button>
+    <button onclick="toggleTwitch()" style="background-color: black; color: white;">Hide Twitch</button>
+    <div id="status" class="status">Checking status...</div>
+</div>
+	
+<span class="highlight"><h1>EvaPilot1 - Directory</h1></span>
+
+<!-- Twitch -->
+<div id="twitchSection" class="twitch-wrapper">
+    <div class="twitch-video">
+        <iframe src="https://player.twitch.tv/?channel=EvaPilot1&parent=evapilot1.github.io"></iframe>
+    </div>
+    <div class="twitch-chat">
+        <iframe src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=evapilot1.github.io"></iframe>
+    </div>
+</div>
+
+    
+<center>
+  <span class="highlight" id="gamingStats">Loading gaming stats...</span>
+</center><br>
+
+<style>
+#gamingStats a {
+    color: #6d28d9; /* royal purple */
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+#gamingStats a:hover {
+    color: #ec4899; /* complementary pink */
+}
+</style>
+
+<script>
+const retroProfileURL = "https://retroachievements.org/user/EvaPilot1";
+const retroUser = "EvaPilot1";
+const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ"; // replace with your RA API key
+
+// Load cached JSON for Steam
+async function loadCachedSteam() {
+    try {
+        const res = await fetch('steam.json');
+        return await res.json();
+    } catch(err) {
+        console.error("Steam JSON error:", err);
+        return null;
+    }
+}
+
+// Load cached JSON for TSA
+async function loadCachedTSA() {
+    try {
+        const res = await fetch('tsa.json');
+        return await res.json();
+    } catch(err) {
+        console.error("TSA JSON error:", err);
+        return null;
+    }
+}
+
+// Fetch RetroAchievements points live
+async function fetchRetroPoints() {
+    try {
+        const res = await fetch(
+            `https://retroachievements.org/API/API_GetUserProfile.php?z=${retroUser}&y=${retroKey}&u=${retroUser}`
+        );
+        const data = await res.json();
+        return data.TotalPoints || 0;
+    } catch(err) {
+        console.error("RetroAchievements error:", err);
+        return null;
+    }
+}
+
+// Update the stats line
+async function updateGamingStats() {
+    const el = document.getElementById("gamingStats");
+
+    const [steamData, tsaData, retroPoints] = await Promise.all([
+        loadCachedSteam(),
+        loadCachedTSA(),
+        fetchRetroPoints()
+    ]);
+
+    const steamText = steamData
+        ? `<a href="${steamData.steam_profile}" target="_blank">Steam Last Played: ${steamData.last_played}</a>`
+        : `<a href="https://steamcommunity.com/id/EvaPilot1" target="_blank">Steam profile</a>`;
+
+    const retroText = retroPoints !== null
+        ? `<a href="${retroProfileURL}" target="_blank">RA: ${retroPoints.toLocaleString()} points</a>`
+        : `<a href="${retroProfileURL}" target="_blank">RA stats unavailable</a>`;
+
+const tsaText = tsaData
+  ? `<a href="${tsaData.profile_url}" target="_blank">
+       TSA: ${tsaData.total_achievements.toLocaleString()} achievements (${tsaData.total_points.toLocaleString()} pts)
+     </a>`
+  : `<a href="https://truesteamachievements.com/user/EvaPilot1" target="_blank">TSA profile</a>`;
+
+    el.innerHTML = `${steamText} | ${retroText} | ${tsaText}`;
+}
+
+// Run
+updateGamingStats();
+</script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+<!-- Cards -->
+<div class="grid">
+
+    <div class="card">
+    <h2>Discord Emojis</h2>
+	Discord emojis should be 128x128 with a maximum size of 256kb.
+	I have repurposed some emojis for use with discord, and made some of my own from sprite sheets online for fun.
+    </div>
+
+    <div class="card">
+<center>
+
+<img src="assets/emojis/anime/Type.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Tsundere.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Stickup.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MonaShy.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/LEWD.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Drool.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Cumming.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Ahegao.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/AkaneDance.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/AngelBeats.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Asuka.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Rei.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/AsukaWave.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Rei.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Nerv.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Ramiel.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/ReiDoll.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Shinji.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/BadApple.gif" style="width:64px; height:49px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Behelit.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Catgirl.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/2bgasm.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Bocchi.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Chii.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Chiyochan.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Osaka.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Chuunibyou.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Dragonball.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/SuperSaiyan.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/ReverseCard.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Exodia.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Fern.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/FernAngy.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Frieren.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/FrierenSpin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Haruhi.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Holo.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/JijiWow.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Konata.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Konata.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/KonataYawn.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Kurisu.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Kurumi.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/KurumiSmug.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Lain.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Lain.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/LainOnesie.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenharaLove.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenheraBlush.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenheraText.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenheraWave.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Miku.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuCheck.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuDance.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuMad.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuPeek.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/PunishYou.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Taiga.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Winry.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/WinryGlare.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/YunoMP5.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/YunoYay.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/cats/CatHyper.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/CatJam.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/ConfusedCat.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/MorningCat.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/PopCat.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/Ruffles.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/TheVoices.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/currency/Ring.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/MasterEmerald.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BottleCap.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BubsyAtom.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/CreditCard.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Crystal.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Dubloon.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Emerald.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Gem.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Gil.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Gold.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldBolt.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldCoin.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldStack.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldShell.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Shell.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/LegoStud.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Meseta.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Orb.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Oren.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Robux.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Rupee.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Star.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/StarCoin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Ting.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/MoneyBag.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Coin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/CoinSMB.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BellBag.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BellBag.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+</center>
+    </div>
+
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<center>
+	<span class="highlight">
+<a href="#" target="blank" style="font-size: 12px;">[Emojis]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Stickers]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Avatars]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Banners]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Wallpapers]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Gifs]</a>
+<a class="toggle" onclick="toggleLinks()" style="font-size: 12px;">[?]</a>
+	</span>
+</center> 
+	
+<script>
+function toggleTwitch() {
+    const section = document.getElementById("twitchSection");
+    const button = event.target;
+
+    if (section.style.display === "none") {
+        section.style.display = "flex";
+        button.textContent = "Hide Twitch";
+        localStorage.setItem("twitchHidden", "false");
+    } else {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+        localStorage.setItem("twitchHidden", "true");
+    }
+}
+
+// Load saved preference
+window.addEventListener("DOMContentLoaded", () => {
+    const hidden = localStorage.getItem("twitchHidden") === "true";
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    if (hidden) {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+    }
+});
+    
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+}
+
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+}
+
+let manualOverride = false;
+
+function toggleTwitch() {
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    manualOverride = true;
+
+    if (section.style.display === "none") {
+        section.style.display = "flex";
+        button.textContent = "Hide Twitch";
+        localStorage.setItem("twitchHidden", "false");
+    } else {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+        localStorage.setItem("twitchHidden", "true");
+    }
+}
+
+async function checkLiveStatus() {
+    const el = document.getElementById("status");
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    try {
+        const res = await fetch("https://decapi.me/twitch/uptime/EvaPilot1");
+        const text = await res.text();
+
+        const isLive = !text.includes("offline");
+
+        if (isLive) {
+            el.textContent = "● LIVE";
+            el.className = "status live";
+
+            // Show if live (unless manually hidden)
+            if (!manualOverride && localStorage.getItem("twitchHidden") !== "true") {
+                section.style.display = "flex";
+                button.textContent = "Hide Twitch";
+            }
+
+        } else {
+            el.textContent = "● Offline";
+            el.className = "status offline";
+
+            // Auto-hide if offline (unless manually shown)
+            if (!manualOverride) {
+                section.style.display = "none";
+                button.textContent = "Show Twitch";
+            }
+        }
+
+    } catch {
+        el.textContent = "Status unavailable";
+    }
+}
+
+// Load preferences
+window.addEventListener("DOMContentLoaded", () => {
+    const hidden = localStorage.getItem("twitchHidden") === "true";
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    if (hidden) {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+    }
+
+    checkLiveStatus();
+    setInterval(checkLiveStatus, 60000);
+});
+</script>
+
+</body>
+</html>
