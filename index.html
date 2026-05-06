@@ -47,7 +47,15 @@ body.dark {
     background-size: cover;
 }
 
-        h1 p {
+        h1 {
+            text-align: center;
+			    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: background-color 0.3s, color 0.3s; /* smooth dark mode transition */
+        }
+
+		p {
             text-align: center;
 			    background-color: var(--highlight-bg);
     color: var(--highlight-color);
@@ -281,7 +289,7 @@ body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
 
     
 <center>
-  <span class="highlight" id="gamingStats"><p>Live Twitch stream hub, EvaPilot1 social links, and a curated directory of useful websites and tools. Explore custom projects including a Discord emoji collection and anime/game themed content.</p></span></br>
+  <span class="highlight" id="gamingStats">Checking status...</span></br>
 
 <span class="highlight">
 <a href="emojis.html" target="blank" style="font-size: 16px;">[Emojis]</a>
