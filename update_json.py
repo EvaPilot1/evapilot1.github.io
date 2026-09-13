@@ -78,7 +78,7 @@ except Exception as e:
 
 # Save JSON
 tsa_data = {
-    "profile_url": f"https://truesteamachievements.com/user/EvaPilot1",
+    "profile_url": f"https://truesteamachievements.com/gamer/EvaPilot1?cb=6029",
     "total_achievements": total_achievements,
     "total_points": total_points,
     "updated": datetime.utcnow().isoformat()
