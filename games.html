@@ -892,22 +892,25 @@ function toggleImages() {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const card = document.getElementById("emojis");
-  const images = card.querySelectorAll("img");
 
-  let png = 0;
-  let gif = 0;
+  fetch("games.csv")
+    .then(response => response.text())
+    .then(data => {
 
-  images.forEach(img => {
-    const src = img.src.toLowerCase().split("?")[0];
-    if (src.endsWith(".png")) png++;
-    if (src.endsWith(".gif")) gif++;
-  });
+      const rows = data.trim().split("\n");
 
-  const total = images.length;
+      // Subtract 1 to exclude the header row
+      const total = rows.length - 1;
 
-  const output = card.querySelector(".cardCount");
-  output.textContent = `Images: ${total} (PNG: ${png}, GIF: ${gif})`;
+      const output = document.querySelector(".cardCount");
+
+      output.textContent = `Games Beaten: ${total}`;
+
+    })
+    .catch(error => {
+      console.error("Error loading games.csv:", error);
+    });
+
 });
 </script>
 
