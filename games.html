@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Emoji Collection – Custom Emojis by EvaPilot1</title>
+	<meta name="description" content="Browse and download custom Discord emojis created by EvaPilot1. A growing collection of unique emotes for your server.">
+    <!-- Standard favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000;
+            --card: #f4f4f4;
+	--highlight-bg: rgba(255, 255, 255, 0.7); /* light highlight in light mode */
+    	--highlight-color: #000; /* text color for light mode */
+        }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg); /* fallback if image fails */
+    background-image: url('assets/images/wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover; /* Makes it cover the entire page */
+    color: var(--text);
+    transition: 0.3s;
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #fff;
+    --card: #1e1e1e;
+    --highlight-bg: rgba(0, 0, 0, 0.7);
+    --highlight-color: #fff;
+
+    background-color: var(--bg); /* fallback if dark wallpaper fails */
+    background-image: url('assets/images/wallpaper-dark.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+        h1 {
+            text-align: center;
+			    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: background-color 0.3s, color 0.3s; /* smooth dark mode transition */
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0px;
+        }
+
+        .status.live { color: red; }
+        .status.offline { color: gray; }
+
+        /* Twitch */
+.twitch-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* center the content */
+    gap: 10px;
+    margin-bottom: 25px;
+    max-width: 1100px;       /* optional, limits total width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.twitch-video {
+    flex: 2 1 600px;         /* grows, shrinks, base width 600px */
+}
+
+.twitch-chat {
+    flex: 1 1 300px;         /* grows, shrinks, base width 300px */
+}
+
+        iframe {
+            width: 100%;
+            height: 393px;
+            border: none;
+        }
+
+        /* Card grid */
+/* Card grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(250px, 600px));
+    gap: 15px;
+    justify-content: center; /* center grid on wider screens */
+}
+
+/* Frosted glass cards */
+.card {
+    background: rgba(255, 255, 255, 0.3); /* light transparent */
+    backdrop-filter: blur(10px); /* blur behind the card */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    background: rgba(255, 255, 255, 0.45); /* slightly more opaque on hover */
+}
+
+/* Dark mode support */
+body.dark .card {
+    background: rgba(30, 30, 30, 0.5);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.dark .card:hover {
+    background: rgba(30, 30, 30, 0.65);
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 🖥️ Large screens → max 6 columns */
+@media (min-width: 1600px) {
+    .grid {
+        grid-template-columns: repeat(1, 600px);
+    }
+}
+
+        .card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            margin: 8px 0;
+        }
+
+        a {
+            color: #8e44ad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+		body.dark a {
+			-webkit-text-stroke: 0.3px black;
+        }
+
+        a:hover {
+            color: #ec4899;
+        }
+
+        .description {
+            margin-left: 6px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
+.card:hover .description {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
+
+.highlight {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: background-color 0.3s, color 0.3s; /* smooth dark mode transition */
+}
+
+<style>
+.magic-title {
+  display: inline-block;
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px #fff, 0 0 12px #ffccff, 0 0 18px #ff66ff;
+}
+
+/* Wrap each letter in a span for animation */
+.magic-title span {
+  display: inline-block;
+  animation: floatMagic 3s infinite ease-in-out;
+}
+
+/* Stagger letters */
+.magic-title span:nth-child(1) { animation-delay: 0s; }
+.magic-title span:nth-child(2) { animation-delay: 0.1s; }
+.magic-title span:nth-child(3) { animation-delay: 0.2s; }
+.magic-title span:nth-child(4) { animation-delay: 0.3s; }
+.magic-title span:nth-child(5) { animation-delay: 0.4s; }
+.magic-title span:nth-child(6) { animation-delay: 0.5s; }
+.magic-title span:nth-child(7) { animation-delay: 0.6s; }
+
+/* Gentle floating + slight rotation */
+@keyframes floatMagic {
+  0% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
+  50% { transform: translateY(-6px) rotate(5deg); color: #ffffff; }
+  100% { transform: translateY(0) rotate(0deg); color: #ffb6ff; }
+}
+
+/* Magical spiral letters for links */
+.magical-link {
+    display: inline-block;
+    color: #9b59b6; /* your purple */
+    font-weight: bold;
+    font-size: 1em;   /* match your description / normal link size */
+    letter-spacing: 1px; /* slightly tighter for smaller text */
+    position: relative;
+    text-decoration: none;
+}
+
+.magical-link span {
+    display: inline-block;
+    animation: swirlTwinkle 3s infinite;
+    transform-origin: center center;
+}
+
+/* Keyframes for spiraling + twinkling */
+@keyframes swirlTwinkle {
+    0%   { transform: rotate(0deg) translateY(0) scale(1); opacity: 1; }
+    25%  { transform: rotate(5deg) translateY(-2px) scale(1.05); opacity: 0.85; }
+    50%  { transform: rotate(0deg) translateY(0) scale(1); opacity: 1; }
+    75%  { transform: rotate(-5deg) translateY(2px) scale(0.95); opacity: 0.85; }
+    100% { transform: rotate(0deg) translateY(0) scale(1); opacity: 1; }
+}
+		
+
+  #hidden-links {
+    display: none;
+    margin-top: 10px;
+  }
+  a.toggle {
+    cursor: pointer;
+  }
+		
+    </style>
+</head>
+<body>
+	
+<div class="controls">
+    <button onclick="toggleDarkMode()" style="background-color: black; color: white;">🌙Toggle Dark Mode</button>
+    <button onclick="toggleTwitch()" style="background-color: black; color: white;">Hide Twitch</button>
+    <div id="status" class="status">Checking status...</div>
+</div>
+	
+<span class="highlight"><a href="index.html"><h1>EvaPilot1 - Directory</h1></a></span>
+
+<!-- Twitch -->
+<div id="twitchSection" class="twitch-wrapper">
+    <div class="twitch-video">
+        <iframe src="https://player.twitch.tv/?channel=EvaPilot1&parent=evapilot1.github.io"></iframe>
+    </div>
+    <div class="twitch-chat">
+        <iframe src="https://www.twitch.tv/embed/EvaPilot1/chat?parent=evapilot1.github.io"></iframe>
+    </div>
+</div>
+
+    
+<center>
+  <span class="highlight" id="gamingStats">Loading gaming stats...</span>
+</center><br>
+
+<style>
+#gamingStats a {
+    color: #6d28d9; /* royal purple */
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+#gamingStats a:hover {
+    color: #ec4899; /* complementary pink */
+}
+</style>
+
+<script>
+const retroProfileURL = "https://retroachievements.org/user/EvaPilot1";
+const retroUser = "EvaPilot1";
+const retroKey = "wrdeYlq4RkIQlWzt0qDFW42bC6o9DtTQ"; // replace with your RA API key
+
+// Load cached JSON for Steam
+async function loadCachedSteam() {
+    try {
+        const res = await fetch('steam.json');
+        return await res.json();
+    } catch(err) {
+        console.error("Steam JSON error:", err);
+        return null;
+    }
+}
+
+// Load cached JSON for TSA
+async function loadCachedTSA() {
+    try {
+        const res = await fetch('tsa.json');
+        return await res.json();
+    } catch(err) {
+        console.error("TSA JSON error:", err);
+        return null;
+    }
+}
+
+// Fetch RetroAchievements points live
+async function fetchRetroPoints() {
+    try {
+        const res = await fetch(
+            `https://retroachievements.org/API/API_GetUserProfile.php?z=${retroUser}&y=${retroKey}&u=${retroUser}`
+        );
+        const data = await res.json();
+        return data.TotalPoints || 0;
+    } catch(err) {
+        console.error("RetroAchievements error:", err);
+        return null;
+    }
+}
+
+// Update the stats line
+async function updateGamingStats() {
+    const el = document.getElementById("gamingStats");
+
+    const [steamData, tsaData, retroPoints] = await Promise.all([
+        loadCachedSteam(),
+        loadCachedTSA(),
+        fetchRetroPoints()
+    ]);
+
+    const steamText = steamData
+        ? `<a href="${steamData.steam_profile}" target="_blank">Steam Last Played: ${steamData.last_played}</a>`
+        : `<a href="https://steamcommunity.com/id/EvaPilot1" target="_blank">Steam profile</a>`;
+
+    const retroText = retroPoints !== null
+        ? `<a href="${retroProfileURL}" target="_blank">RA: ${retroPoints.toLocaleString()} points</a>`
+        : `<a href="${retroProfileURL}" target="_blank">RA stats unavailable</a>`;
+
+const tsaText = tsaData
+  ? `<a href="${tsaData.profile_url}" target="_blank">
+       TSA: ${tsaData.total_achievements.toLocaleString()} achievements (${tsaData.total_points.toLocaleString()} pts)
+     </a>`
+  : `<a href="https://truesteamachievements.com/gamer/EvaPilot1" target="_blank">TSA profile</a>`;
+
+    el.innerHTML = `${steamText} | ${retroText} | ${tsaText}`;
+}
+
+// Run
+updateGamingStats();
+</script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+<!-- Cards -->
+<div class="grid">
+
+    <div class="card">
+    <h2 class="magic-title">⭐ Discord Emojis</h2>
+<script>
+// Split letters into spans
+const title = document.querySelector('.magic-title');
+title.innerHTML = title.textContent.split('').map(char => `<span>${char}</span>`).join('');
+</script>
+	<p>Browse a growing collection of custom Discord emojis curated by me. All emojis are formatted for Discord (128x128, under 256KB) and include a mix of original designs and repurposed sprite-based emotes, ready to use in your server.</p>
+		
+<p><a href="https://ko-fi.com/evapilot1" target="_blank" class="magical-link">EvaPilot1</a> <span class="description"></span></p>
+
+<script>
+const link = document.querySelector('.magical-link');
+link.innerHTML = link.textContent.split('').map(char => `<span>${char}</span>`).join('');
+</script>
+
+		
+    </div>
+
+    <div class="card" id="emojis">
+<center>
+<p class="cardCount"></p>
+<img src="assets/emojis/anime/Type.gif" alt="Animated typing Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Tsundere.png" alt="Tsundere Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Stickup.png" alt="Stick 'em up Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MonaShy.gif" alt="Animated Shy Mona Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Drool.png" alt="Drooling Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/LEWD.gif" alt="Animated lewd sign Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MadokaLewd.png" alt="Animated LEWD Puella Magi Madoka Magica Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/AkaneDance.gif" alt="Animated Akane Ranma 1/2 Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/AngelBeats.png" alt="Tenshi Angel Beats Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Asuka.png" alt="Asuka Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Rei.png" alt="Rei Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/AsukaWave.gif" alt="Animated Asuka Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Rei.gif" alt="Animated Rei Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Nerv.png" alt="NERV Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Ramiel.png" alt="Ramiel Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/ReiDoll.png" alt="Rei Doll Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Shinji.png" alt="Shinji Neon Genesis Evangelion Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/BadApple.gif" alt="Animated Bad Apple Touhou Discord emoji" style="width:64px; height:49px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Behelit.gif" alt="Animated Behelit Berserk Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Catgirl.png" alt="Cat Girl Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/2bgasm.png" alt="2b Nier Automata Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Bocchi.gif" alt="Animated Bocchi the Rock Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Chii.png" alt="Chii Chobits Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Chiyochan.png" alt="Chiyochan Azumanga Daioh Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Osaka.png" alt="Osaka Azumanga Daioh Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Chuunibyou.gif" alt="Animated Rikka Chuunibyou Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Dragonball.png" alt="Dragon Ball Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/SuperSaiyan.gif" alt="Animated Super Saiyan Dragon Ball Z Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/ReverseCard.gif" alt="Animated Yugi Yu-Gi-Oh Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Exodia.gif" alt="Animated Exodia Yu-Gi-Oh Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Fern.png" alt="Fern Frieren Beyond Journey's End Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/FernAngy.gif" alt="Animated Fern Frieren Beyond Journey's End Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Frieren.png" alt="Frieren Beyond Journey's End Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/FrierenSpin.gif" alt="Animated Spinning Frieren Beyond Journey's End Discord Emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Haruhi.png" alt="Haruhi Suzumiya Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Holo.gif" alt="Animated Holo the Wise Wolf Spice and Wolf Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/JijiWow.gif" alt="Animated Jiji Studio Ghibli Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Konata.gif" alt="Animated Konata Lucky Star Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Konata.png" alt="Konata Lucky Star Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/KonataYawn.gif" alt="Animated Yawning Konata Lucky Star Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Kurisu.png" alt="Kurisu Steins;Gate Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Kurumi.png" alt="Kurumi Date-a-Live Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/KurumiSmug.gif" alt="Animated Kurumi Date-a-Live Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Lain.gif" alt="Animated Lain Serial Experiments Lain Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Lain.png" alt="Lain Serial Experiments Lain Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/LainOnesie.png" alt="Lain Onesie Serial Experiments Lain Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenharaLove.gif" alt="Animated Love Menhara Girl Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenheraBlush.png" alt="Blush Menhara Girl Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenheraText.png" alt="Texting Menhera Girl Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MenheraWave.png" alt="Waving <enhera Girl Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Miku.png" alt="Hatsune Miku Vocaloid Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuCheck.png" alt="Checkmark Hatsune Miku Vocaloid Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuDance.gif" alt="Animated Hatsune Miku Vocaloid Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuMad.png" alt="Mad Hatsune Miku Vocaloid Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MikuPeek.gif" alt="Animated Peeking Miku Vocaloid Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/RabbitHole.gif" alt="Animated Rabbit Hole Miku Vocaloid Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/PunishYou.gif" alt="Animated Sailor Moon Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Taiga.png" alt="Taiga Toradora Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/Winry.png" alt="Winry Fullmetal Alchemist Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/WinryGlare.png" alt="Glaring Winry Fullmetal Alchemist Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/YunoMP5.gif" alt="Animated Shooting Yuno Gasai Mirai Nikki Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/YunoYay.gif" alt="Animated Yay Yuno Gasai Mirai Nikki Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/anime/MeMeMe.gif" alt="Animated Me! Me! Me! Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/sanrio/HelloKitty.png" alt="Hello Kitty Sanrio Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sanrio/Rilakuma.png" alt="Rilakkuma Sanrio Discord emoji"style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sanrio/Korillakuma.gif" alt="Animated Korilakkuma Sanrio Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/punpun/Punpun.png" alt="Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Blush.png" alt="Blushing Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Blush2.png" alt="Blush Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/FeelingCute.png" alt="Feeling Cute Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Milady.gif" alt="Animated Milady Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Sup.png" alt="Sup Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Nervous.gif" alt="Animated Nervous Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Nervous.png" alt="Nervous Punpun Onodera Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Cry.gif" alt="Animated crying Punpun Onodera Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Tear.png" alt="Tear Punpun Onodera Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/IceLolly.gif"  alt="Animated Ice Lolly Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Ghost.gif" alt="Animated Ghost Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Pat.gif" alt="Animated patted Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Innocense.gif" alt="Animated Innocent Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Question.gif" alt="Animated Question Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Zzz.gif" alt="Animated sleeping Goodnight Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Scarf.png" alt="Scarf Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Sneak.gif" alt="Animated sneaky Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/UncleBeam.gif" alt="Animated Beaming Uncle Oyasumi Punpun emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/punpun/Dad.gif" alt="Animated disapproving dad Oyasumi Punpun Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/smt/Futaba.gif" alt="Animated Futaba Sakura Persona 5 Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/smt/FutabaType.gif" alt="Animated Futaba Sakura typing Persona 5 Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/smt/JackFrost.gif" alt="Animated Jack Frost Shin Megami Tensei Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/smt/PyroJack.gif" alt="Animated Pyro Jack Shin Megami Tensei Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/digimon/Calumon.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/digimon/Terriermon.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/digimon/Terriermon2.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/digimon/Gatomon.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/digimon/Meat.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/doom/DoomSpree.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doom/Invisiibility.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doom/Invulnerability.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doom/Megasphere.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doom/Soulphere.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/finalfantasy/blackmage.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/monk.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/redmage.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/thief.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/warrior.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/whitemage.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/BlackMage.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/beatrix.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/masamune.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/sephiroth.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/vivi.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/chocobo.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/fatchocobo.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/moogle.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/PartyMoogle.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/kingmogglemogxii.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/bomb.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/bomb2.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/Cactuar.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/cactuarhd.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/Tonberry.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/SkullEater.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/Blind.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/finalfantasy/Silence.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/fruit/DXHeroFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/DXDarkFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/DXFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/HeroFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/DarkFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/ChaoFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/HeartFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/RoundFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/SquareFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/TriangleFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Mushroom.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/amango.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/kirima.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/blimp.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/dumbapple.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/gemapple.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/LifeFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/LifeFruit2.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/LowPolyGrapes.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/maximtomato.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/maximtomato2.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/paupu.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Pecha.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/StaminaFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Stardrop.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/StarFruit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Wumpa.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Eggplant.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/eggplant2.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/heartbeet.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/cuberry.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/phaselemon.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Moonberry.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Strawberry.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Banana.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/GoldBanana.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Plum.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Redberry.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Apple.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/AppleHD.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/cherry.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/CherryHD.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/coconut.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/CoconutHD.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/orange.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/OrangeHD.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/peach.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/PeachHD.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/pear.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/PearHD.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Turnip.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/TurnipSMB.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/Carrot.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/fruit/melon.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/doa/Icelolly.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doa/SushiRoll.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doa/EggSushi.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doa/TunaSushi.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doa/CherryBlossom.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doa/Kunai.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/doa/Ring.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/drinks/beer.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/wizardbeer.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/Wine.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/wine2.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/NukaCola.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/Coke.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/DrPepper.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/pepsi.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/pinkmonster.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/strongzero.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/RedBull.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/boba.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/LifePotion.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/ManaPotion.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/healthpotion.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/manapotion.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/rejuvenationpotion.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/LovePotion.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/Potion.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/potion.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/plasmid.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/drinks/Estus.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/YOUDIED.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/pixel/Wine.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Junimo.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/BlueFeather.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Bomb.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Frogger.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Galaga.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Imp.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Invader.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Key.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/OpaOpa.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/PacMan.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Tamagotchi.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Text.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Chicken.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pixel/Riceball.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/pokemon/Snorlax.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/HungrySnorlax.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Snorlax.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Porygon.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Gengar.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/GengarStomp.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/GengarGlow.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/GengarLaugh.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/HappyHaunter.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Ditto.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Koffing.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Magikarp.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Pikachu.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Shock.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Slowpoke.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/SquirtleJam.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/Pokeball.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/pokemon/CharizardCard.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/AtomicHealth.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/logo/DukeNukem.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/logo/Quake.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/logo/KombatKoin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/logo/Umbrella.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/playstation/Ammo.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/InkRibbon.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/Herb.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/Herb.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/GoldEgg.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/DevilStar.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/Medkit.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/Ration.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/Snake.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/Remote.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/Cage.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/playstation/PSP.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/Cheeseburger.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/lollipop.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Clippy.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/DWTD.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Floppy.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/LSD.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Pills!.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Prinny.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Ryu.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Shuriken.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/StopSpam.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/peng.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/powernode.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Uzi.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/Kappa.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/sonic/SonicNono.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/SonicTap.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/SuperSonic.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/HappyTails.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Tails.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/TailsRun.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Knuckles.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/KnucklesWalk.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/KnuxRun.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/KnucklesRoll.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Amy.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/ChaosControl.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/shadow.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/ShadowBike.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/ShadowDash.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Rouge.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Robotnik.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Tantrum.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/MechaSonic.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/MetalSonic.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Emblem.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Screen.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/Spinner.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/sonic/0Rings.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/currency/Ring.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/MasterEmerald.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BottleCap.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BubsyAtom.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/CreditCard.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Crystal.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Dubloon.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Emerald.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Gem.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Gil.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Gold.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldBolt.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldCoin.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldStack.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/GoldShell.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Shell.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/LegoStud.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Meseta.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Orb.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Oren.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Robux.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Rupee.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Star.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/StarCoin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Ting.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/MoneyBag.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/Coin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/CoinSMB.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BellBag.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/currency/BellBag.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/nintendo/TomNook.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/fossil.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/leaf.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Present.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/snowflake.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Ankh.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/AnkhDance.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/AnkhF.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/kirbyburger.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Energy.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Mushroom.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/YoshiCoin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Porkchop.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/POW.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Screwattack.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Link.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/Moon.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/FullHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/BlueShell.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nintendo/BlueEgg.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/n64/Kojiro.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/Milk.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/Grunty.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/Jiggy.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/MusicNote.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/RedFeather.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/GoldFeather.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/JumboToken.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/gameboy.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/SuperStar.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/substitute.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/sushi.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/sushiegg.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/sushishrimp.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/sushiuni.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/sushiroe.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/sushiroll.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/sushiroll2.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/n64/greentea.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/nso/nso_Icon_tea.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/Bujishibou_eng.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_gomen.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Love.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Ok.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Pien.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Saikouka.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Sorena.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Waritodoudemoii.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Icon_pien_cat.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Icon_mendako.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Icon_bear.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/nso/nso_Icon_heart.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/heart/DrippingHeartBlack.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/DrippingHeartWhite.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/FlashingHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/PurpleHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/HeartTurn.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/HeartTurnP.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/PinkHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/PurpleHeart2.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/BeatingHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/CrystalHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/FloatyHearts.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/GemHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/GlitchHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/GreenHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/HeartScribble.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/HeartSpin.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/InkyHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/PuffHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/SparkleHeart.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/TwitchHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/WhiteHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/YellowHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/LoveTreatment.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/heart/Pink.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/cats/cat.gif" alt="Animated yawning cat Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/CatHyper.gif" alt="Animated hyper cat Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/CatJam.gif" alt="Animated cat jamming Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/ConfusedCat.png" alt="Animated confused cat Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/MorningCat.gif" alt="Animated morning cat Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/PopCat.gif" alt="Animated popcat Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/Ruffles.gif" alt="Animated cat eating Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/TheVoices.gif" alt="Animated disturbed cat Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/cats/kittyorb.gif" alt="Animated kitten orb Discord emoji" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<img src="assets/emojis/kaomoji/KaomojiBlush.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiCry.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiDrop.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiHeart.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiKiss.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiMad.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiSquish.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiStars.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+<img src="assets/emojis/kaomoji/KaomojiYap.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+<br><a href="#" onclick="toggleImages(); return false;">
+    Show / Hide NSFW Emojis
+</a>
+
+<div id="imageContainer" hidden style="margin-top:10px;">
+
+    <img src="assets/emojis/heart/heart_cum.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom:10px;">
+    <img src="assets/emojis/heart/Yumshot.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom:10px;">
+    <img src="assets/emojis/heart/Succ.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom:10px;">
+    <img src="assets/emojis/fruit/Banana.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom:10px;">
+    <img src="assets/emojis/fruit/Eggplant3.png" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom:10px;">
+    <img src="assets/emojis/anime/Cumming.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom:10px;">
+	<img src="assets/emojis/anime/Ahegao.gif" style="width:64px; height:64px; vertical-align:middle; margin-right:5px; margin-bottom: 10px;">
+
+</div>
+
+<script>
+function toggleImages() {
+    const el = document.getElementById("imageContainer");
+    el.hidden = !el.hidden;
+}
+</script>
+	
+	
+	
+</center>
+    </div>
+
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const card = document.getElementById("emojis");
+  const images = card.querySelectorAll("img");
+
+  let png = 0;
+  let gif = 0;
+
+  images.forEach(img => {
+    const src = img.src.toLowerCase().split("?")[0];
+    if (src.endsWith(".png")) png++;
+    if (src.endsWith(".gif")) gif++;
+  });
+
+  const total = images.length;
+
+  const output = card.querySelector(".cardCount");
+  output.textContent = `Images: ${total} (PNG: ${png}, GIF: ${gif})`;
+});
+</script>
+
+<center>
+	<span class="highlight">
+<a href="#" target="blank" style="font-size: 12px;">[Stickers]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Avatars]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Banners]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Wallpapers]</a>
+<a href="#" target="blank" style="font-size: 12px;">[Gifs]</a>
+	</span>
+</center> 
+	
+<script>
+function toggleTwitch() {
+    const section = document.getElementById("twitchSection");
+    const button = event.target;
+
+    if (section.style.display === "none") {
+        section.style.display = "flex";
+        button.textContent = "Hide Twitch";
+        localStorage.setItem("twitchHidden", "false");
+    } else {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+        localStorage.setItem("twitchHidden", "true");
+    }
+}
+
+// Load saved preference
+window.addEventListener("DOMContentLoaded", () => {
+    const hidden = localStorage.getItem("twitchHidden") === "true";
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    if (hidden) {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+    }
+});
+    
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+}
+
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+}
+
+let manualOverride = false;
+
+function toggleTwitch() {
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    manualOverride = true;
+
+    if (section.style.display === "none") {
+        section.style.display = "flex";
+        button.textContent = "Hide Twitch";
+        localStorage.setItem("twitchHidden", "false");
+    } else {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+        localStorage.setItem("twitchHidden", "true");
+    }
+}
+
+async function checkLiveStatus() {
+    const el = document.getElementById("status");
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    try {
+        const res = await fetch("https://decapi.me/twitch/uptime/EvaPilot1");
+        const text = await res.text();
+
+        const isLive = !text.includes("offline");
+
+        if (isLive) {
+            el.textContent = "● LIVE";
+            el.className = "status live";
+
+            // Show if live (unless manually hidden)
+            if (!manualOverride && localStorage.getItem("twitchHidden") !== "true") {
+                section.style.display = "flex";
+                button.textContent = "Hide Twitch";
+            }
+
+        } else {
+            el.textContent = "● Offline";
+            el.className = "status offline";
+
+            // Auto-hide if offline (unless manually shown)
+            if (!manualOverride) {
+                section.style.display = "none";
+                button.textContent = "Show Twitch";
+            }
+        }
+
+    } catch {
+        el.textContent = "Status unavailable";
+    }
+}
+
+// Load preferences
+window.addEventListener("DOMContentLoaded", () => {
+    const hidden = localStorage.getItem("twitchHidden") === "true";
+    const section = document.getElementById("twitchSection");
+    const button = document.querySelector("button[onclick='toggleTwitch()']");
+
+    if (hidden) {
+        section.style.display = "none";
+        button.textContent = "Show Twitch";
+    }
+
+    checkLiveStatus();
+    setInterval(checkLiveStatus, 60000);
+});
+</script>
+
+</body>
+</html>
