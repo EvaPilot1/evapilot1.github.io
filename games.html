@@ -403,14 +403,135 @@ link.innerHTML = link.textContent.split('').map(char => `<span>${char}</span>`).
 
     <div class="card" id="emojis">
 <center>
+
 <p class="cardCount"></p>
 
-	lkjhdsglzkjchglkdsxjnvckljsadnvb;kljnfbvc;lkjknb;lkncvxb;lkvcxbn
-	TABLE GOES HERE
-	
-	
-	
+<table id="gamesTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">Game</th>
+            <th onclick="sortTable(1)">Platform</th>
+            <th onclick="sortTable(2)">Record</th>
+        </tr>
+    </thead>
+
+    <tbody id="gamesBody"></tbody>
+</table>
+
 </center>
+
+<script>
+
+let games = [];
+let sortColumn = 0;
+let sortAscending = true;
+
+// Load CSV
+fetch("games.csv")
+    .then(response => response.text())
+    .then(data => {
+
+        games = data.trim().split("\n").slice(1).map(row => {
+
+            return row.split(",").map(cell =>
+                cell.trim().replace(/^"|"$/g, "")
+            );
+
+        });
+
+        // Sort alphabetically by default
+        games.sort((a, b) =>
+            a[0].localeCompare(b[0])
+        );
+
+        displayGames();
+
+    });
+
+
+// Display table
+function displayGames() {
+
+    const body = document.getElementById("gamesBody");
+
+    body.innerHTML = "";
+
+    games.forEach(game => {
+
+        const row = document.createElement("tr");
+
+        // Game
+        const gameCell = document.createElement("td");
+        gameCell.textContent = game[0];
+        row.appendChild(gameCell);
+
+        // Platform
+        const platformCell = document.createElement("td");
+        platformCell.textContent = game[1];
+        row.appendChild(platformCell);
+
+        // Record
+        const recordCell = document.createElement("td");
+
+        if (game[2].toLowerCase() !== "none") {
+
+            const link = document.createElement("a");
+
+            link.textContent = game[2];
+            link.href = game[3];
+            link.target = "_blank";
+
+            recordCell.appendChild(link);
+
+        } else {
+
+            recordCell.textContent = "None";
+
+        }
+
+        row.appendChild(recordCell);
+
+        body.appendChild(row);
+
+    });
+
+    // Update counter
+    document.querySelector(".cardCount").textContent =
+        `Games Beaten: ${games.length}`;
+
+}
+
+
+// Sort table
+function sortTable(column) {
+
+    if (sortColumn === column) {
+
+        sortAscending = !sortAscending;
+
+    } else {
+
+        sortColumn = column;
+        sortAscending = true;
+
+    }
+
+    games.sort((a, b) => {
+
+        const valueA = a[column].toLowerCase();
+        const valueB = b[column].toLowerCase();
+
+        return sortAscending
+            ? valueA.localeCompare(valueB)
+            : valueB.localeCompare(valueA);
+
+    });
+
+    displayGames();
+
+}
+
+</script>
     </div>
 
 </div>
@@ -443,7 +564,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     })
     .catch(error => {
-      console.error("Error loading games.csv:", error);
+      console.error("Error loading Games.csv:", error);
     });
 
 });
