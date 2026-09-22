@@ -500,11 +500,12 @@ fetch("games.csv")
             a[0].localeCompare(b[0])
         );
 
-        displayGames();
+document
+    .getElementById("hideUnverified")
+    .addEventListener("change", displayGames);
 
-        document
-            .getElementById("hideUnverified")
-            .addEventListener("change", displayGames);
+// Run after everything is fully initialized
+setTimeout(displayGames, 0);
 
     });
 
