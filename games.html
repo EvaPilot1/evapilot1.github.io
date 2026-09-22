@@ -450,7 +450,20 @@ link.innerHTML = link.textContent.split('').map(char => `<span>${char}</span>`).
     <div class="card" id="emojis">
 <center>
 
-<p class="cardCount"></p>
+<div class="card" id="emojis">
+
+<center>
+
+<div style="display:flex; justify-content:center; align-items:center; gap:20px; margin-bottom:15px;">
+
+    <p class="cardCount" style="margin:0;"></p>
+
+    <label>
+        <input type="checkbox" id="hideUnverified" checked>
+        Hide Unverified Games
+    </label>
+
+</div>
 
 <table id="gamesTable">
     <thead>
@@ -492,36 +505,64 @@ fetch("games.csv")
 
         displayGames();
 
+        document
+            .getElementById("hideUnverified")
+            .addEventListener("change", displayGames);
+
     });
 
 
 // Display table
 function displayGames() {
 
-    const body = document.getElementById("gamesBody");
+    const body =
+        document.getElementById("gamesBody");
 
     body.innerHTML = "";
 
+    const hideUnverified =
+        document.getElementById("hideUnverified").checked;
+
+    let visibleCount = 0;
+
     games.forEach(game => {
 
-        const row = document.createElement("tr");
+        // Hide entries with no link
+        if (hideUnverified && (!game[3] || game[3].trim() === "")) {
+            return;
+        }
+
+        visibleCount++;
+
+        const row =
+            document.createElement("tr");
 
         // Game
-        const gameCell = document.createElement("td");
+        const gameCell =
+            document.createElement("td");
+
         gameCell.textContent = game[0];
+
         row.appendChild(gameCell);
 
         // Platform
-        const platformCell = document.createElement("td");
+        const platformCell =
+            document.createElement("td");
+
         platformCell.textContent = game[1];
+
         row.appendChild(platformCell);
 
         // Record
-        const recordCell = document.createElement("td");
+        const recordCell =
+            document.createElement("td");
 
-        if (game[2].toLowerCase() !== "none") {
+        if (game[2].toLowerCase() !== "none" &&
+            game[3] &&
+            game[3].trim() !== "") {
 
-            const link = document.createElement("a");
+            const link =
+                document.createElement("a");
 
             link.textContent = game[2];
             link.href = game[3];
@@ -531,7 +572,7 @@ function displayGames() {
 
         } else {
 
-            recordCell.textContent = "None";
+            recordCell.textContent = game[2];
 
         }
 
@@ -543,7 +584,7 @@ function displayGames() {
 
     // Update counter
     document.querySelector(".cardCount").textContent =
-        `Games Beaten: ${games.length}`;
+        `Games Beaten: ${visibleCount}`;
 
 }
 
@@ -564,8 +605,11 @@ function sortTable(column) {
 
     games.sort((a, b) => {
 
-        const valueA = a[column].toLowerCase();
-        const valueB = b[column].toLowerCase();
+        const valueA =
+            a[column].toLowerCase();
+
+        const valueB =
+            b[column].toLowerCase();
 
         return sortAscending
             ? valueA.localeCompare(valueB)
@@ -578,7 +622,8 @@ function sortTable(column) {
 }
 
 </script>
-    </div>
+
+</div>
 
 </div>
     
