@@ -500,12 +500,12 @@ fetch("games.csv")
             a[0].localeCompare(b[0])
         );
 
-document
-    .getElementById("hideUnverified")
-    .addEventListener("change", displayGames);
+        document
+            .getElementById("hideUnverified")
+            .addEventListener("change", displayGames);
 
-// Run after everything is fully initialized
-setTimeout(displayGames, 0);
+        // Run after everything is fully initialized
+        setTimeout(displayGames, 0);
 
     });
 
@@ -540,6 +540,12 @@ function displayGames() {
             document.createElement("td");
 
         gameCell.textContent = game[0];
+
+        // Tooltip from Notes column (5th column)
+        if (game[4] && game[4].trim() !== "") {
+            gameCell.title = game[4];
+            gameCell.style.cursor = "help";
+        }
 
         row.appendChild(gameCell);
 
@@ -604,10 +610,10 @@ function sortTable(column) {
     games.sort((a, b) => {
 
         const valueA =
-            a[column].toLowerCase();
+            (a[column] || "").toLowerCase();
 
         const valueB =
-            b[column].toLowerCase();
+            (b[column] || "").toLowerCase();
 
         return sortAscending
             ? valueA.localeCompare(valueB)
@@ -622,7 +628,6 @@ function sortTable(column) {
 </script>
 
 </div>
-
 </div>
     
 
