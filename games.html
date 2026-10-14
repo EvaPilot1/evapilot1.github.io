@@ -296,8 +296,21 @@ body.dark .card li {text-shadow: 1px 1px 2px rgba(0,0,0,0.7);}
 #gamesTable td:nth-child(3) {
     width: 20%;
 }
-</style>
 
+/* Clickable headings */
+#gamesTable th {
+    cursor: pointer;
+    user-select: none;
+}
+
+#gamesTable th:hover {
+    text-decoration: underline;
+}
+
+/* Sort direction arrows (optional, needs the extra JavaScript) */
+#gamesTable th.asc::after  { content: " ▲"; }
+#gamesTable th.desc::after { content: " ▼"; }
+</style>
 	
 </head>
 <body>
@@ -625,6 +638,12 @@ function sortTable(column) {
             ? valueA.localeCompare(valueB)
             : valueB.localeCompare(valueA);
 
+    });
+
+    // Update the sort arrows
+    document.querySelectorAll("#gamesTable th").forEach((th, i) => {
+        th.classList.remove("asc", "desc");
+        if (i === sortColumn) th.classList.add(sortAscending ? "asc" : "desc");
     });
 
     displayGames();
